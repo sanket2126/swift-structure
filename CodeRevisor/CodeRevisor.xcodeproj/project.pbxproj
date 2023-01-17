@@ -16,6 +16,14 @@
 		9E27134F296FFFB100067263 /* CodeRevisorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27134E296FFFB100067263 /* CodeRevisorUITests.swift */; };
 		9E271351296FFFB100067263 /* CodeRevisorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E271350296FFFB100067263 /* CodeRevisorUITestsLaunchTests.swift */; };
 		9EC0A81F29701554000DE4DC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A81E29701554000DE4DC /* HomeVC.swift */; };
+		9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */; };
+		9EC0A82B2971567D000DE4DC /* ThemeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A8262971567D000DE4DC /* ThemeStyle.swift */; };
+		9EC0A82C2971567D000DE4DC /* UILabel+FormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A8272971567D000DE4DC /* UILabel+FormatStyle.swift */; };
+		9EC0A82D2971567D000DE4DC /* Nsobject+FormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A8282971567D000DE4DC /* Nsobject+FormatStyle.swift */; };
+		9EC0A82E2971567D000DE4DC /* FormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A8292971567D000DE4DC /* FormatStyle.swift */; };
+		9EC0A82F2971567D000DE4DC /* UIView+FormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A82A2971567D000DE4DC /* UIView+FormatStyle.swift */; };
+		9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */; };
+		9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83429766663000DE4DC /* ScreenSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,14 @@
 		9E27134E296FFFB100067263 /* CodeRevisorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRevisorUITests.swift; sourceTree = "<group>"; };
 		9E271350296FFFB100067263 /* CodeRevisorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRevisorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9EC0A81E29701554000DE4DC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
+		9EC0A8262971567D000DE4DC /* ThemeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeStyle.swift; sourceTree = "<group>"; };
+		9EC0A8272971567D000DE4DC /* UILabel+FormatStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+FormatStyle.swift"; sourceTree = "<group>"; };
+		9EC0A8282971567D000DE4DC /* Nsobject+FormatStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Nsobject+FormatStyle.swift"; sourceTree = "<group>"; };
+		9EC0A8292971567D000DE4DC /* FormatStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatStyle.swift; sourceTree = "<group>"; };
+		9EC0A82A2971567D000DE4DC /* UIView+FormatStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FormatStyle.swift"; sourceTree = "<group>"; };
+		9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		9EC0A83429766663000DE4DC /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,8 +195,56 @@
 		9EC0A820297020C0000DE4DC /* AppUtility */ = {
 			isa = PBXGroup;
 			children = (
+				9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */,
+				9EC0A82529715665000DE4DC /* FormatStyle */,
+				9EC0A822297028A4000DE4DC /* Subclass */,
+				9EC0A82129702899000DE4DC /* Extensions */,
 			);
 			path = AppUtility;
+			sourceTree = "<group>";
+		};
+		9EC0A82129702899000DE4DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9EC0A83029715791000DE4DC /* UIKitExtension */,
+				9EC0A83329766651000DE4DC /* Others */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9EC0A822297028A4000DE4DC /* Subclass */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subclass;
+			sourceTree = "<group>";
+		};
+		9EC0A82529715665000DE4DC /* FormatStyle */ = {
+			isa = PBXGroup;
+			children = (
+				9EC0A8292971567D000DE4DC /* FormatStyle.swift */,
+				9EC0A8282971567D000DE4DC /* Nsobject+FormatStyle.swift */,
+				9EC0A8262971567D000DE4DC /* ThemeStyle.swift */,
+				9EC0A8272971567D000DE4DC /* UILabel+FormatStyle.swift */,
+				9EC0A82A2971567D000DE4DC /* UIView+FormatStyle.swift */,
+			);
+			path = FormatStyle;
+			sourceTree = "<group>";
+		};
+		9EC0A83029715791000DE4DC /* UIKitExtension */ = {
+			isa = PBXGroup;
+			children = (
+				9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */,
+			);
+			path = UIKitExtension;
+			sourceTree = "<group>";
+		};
+		9EC0A83329766651000DE4DC /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				9EC0A83429766663000DE4DC /* ScreenSize.swift */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,9 +378,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC0A81F29701554000DE4DC /* HomeVC.swift in Sources */,
+				9EC0A82F2971567D000DE4DC /* UIView+FormatStyle.swift in Sources */,
+				9EC0A82B2971567D000DE4DC /* ThemeStyle.swift in Sources */,
+				9EC0A82E2971567D000DE4DC /* FormatStyle.swift in Sources */,
+				9EC0A82D2971567D000DE4DC /* Nsobject+FormatStyle.swift in Sources */,
 				9E271335296FFFAF00067263 /* CodeRevisor.xcdatamodeld in Sources */,
+				9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */,
 				9E27132B296FFFAF00067263 /* AppDelegate.swift in Sources */,
+				9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */,
+				9EC0A82C2971567D000DE4DC /* UILabel+FormatStyle.swift in Sources */,
 				9E27132D296FFFAF00067263 /* SceneDelegate.swift in Sources */,
+				9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,8 +564,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -522,8 +593,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
