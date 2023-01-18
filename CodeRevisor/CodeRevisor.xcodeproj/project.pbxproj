@@ -24,6 +24,7 @@
 		9EC0A82F2971567D000DE4DC /* UIView+FormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A82A2971567D000DE4DC /* UIView+FormatStyle.swift */; };
 		9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */; };
 		9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83429766663000DE4DC /* ScreenSize.swift */; };
+		9EC0A83729782AE2000DE4DC /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83629782AE2000DE4DC /* UIApplication+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9EC0A82A2971567D000DE4DC /* UIView+FormatStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FormatStyle.swift"; sourceTree = "<group>"; };
 		9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		9EC0A83429766663000DE4DC /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		9EC0A83629782AE2000DE4DC /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 		9EC0A83029715791000DE4DC /* UIKitExtension */ = {
 			isa = PBXGroup;
 			children = (
+				9EC0A83629782AE2000DE4DC /* UIApplication+Extension.swift */,
 				9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */,
 			);
 			path = UIKitExtension;
@@ -389,6 +392,7 @@
 				9EC0A82C2971567D000DE4DC /* UILabel+FormatStyle.swift in Sources */,
 				9E27132D296FFFAF00067263 /* SceneDelegate.swift in Sources */,
 				9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */,
+				9EC0A83729782AE2000DE4DC /* UIApplication+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

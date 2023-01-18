@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+@available(iOS 13.0, *)
+let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+@available(iOS 13.0, *)
+let sceneDelegate = windowScene?.delegate as? SceneDelegate
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -19,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = HomeVC()
+        window?.rootViewController = UINavigationController(rootViewController: HomeVC())
         window?.makeKeyAndVisible()
     }
 
