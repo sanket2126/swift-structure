@@ -11,20 +11,12 @@ import UIKit
 extension UIFont {
     
     enum FontType: String {
-        case regular                 = "Roboto-Regular"
-        case semibold                = "Roboto-SemiBold"
-        case bold                    = "Roboto-Bold"
-        case lightItalic             = "Roboto-LightItalic"
-        case mediumItalic            = "Roboto-MediumItalic"
-        case boldItalic              = "Roboto-BoldItalic"
-        case black                   = "Roboto-Black"
-        case blackItalic             = "Roboto-BlackItalic"
+        case light                   = "Verdana Light"
+        case regular                 = "Verdana"
+        case medium                  = "Verdana Medium"
+        case semibold                = "Verdana SemiBold"
+        case bold                    = "Verdana Bold"
     }
-    
-    
-
-    
-    
     
     /// Set custom font
     /// - Parameters:

@@ -25,6 +25,9 @@
 		9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */; };
 		9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83429766663000DE4DC /* ScreenSize.swift */; };
 		9EC0A83729782AE2000DE4DC /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83629782AE2000DE4DC /* UIApplication+Extension.swift */; };
+		9EC0A83929792185000DE4DC /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83829792185000DE4DC /* UINavigationController+Extension.swift */; };
+		9EC0A83C2979330B000DE4DC /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83B2979330B000DE4DC /* SettingVC.swift */; };
+		9EC0A83E29796FED000DE4DC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83D29796FED000DE4DC /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		9EC0A83429766663000DE4DC /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		9EC0A83629782AE2000DE4DC /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		9EC0A83829792185000DE4DC /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		9EC0A83B2979330B000DE4DC /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		9EC0A83D29796FED000DE4DC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,7 @@
 		9EC0A81829700C9F000DE4DC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9EC0A83A297932E5000DE4DC /* Setting */,
 				9EC0A81D29700D34000DE4DC /* Home */,
 			);
 			path = View;
@@ -236,8 +243,10 @@
 		9EC0A83029715791000DE4DC /* UIKitExtension */ = {
 			isa = PBXGroup;
 			children = (
+				9EC0A83829792185000DE4DC /* UINavigationController+Extension.swift */,
 				9EC0A83629782AE2000DE4DC /* UIApplication+Extension.swift */,
 				9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */,
+				9EC0A83D29796FED000DE4DC /* UIColor+Extension.swift */,
 			);
 			path = UIKitExtension;
 			sourceTree = "<group>";
@@ -248,6 +257,14 @@
 				9EC0A83429766663000DE4DC /* ScreenSize.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		9EC0A83A297932E5000DE4DC /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				9EC0A83B2979330B000DE4DC /* SettingVC.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,10 +404,13 @@
 				9EC0A82D2971567D000DE4DC /* Nsobject+FormatStyle.swift in Sources */,
 				9E271335296FFFAF00067263 /* CodeRevisor.xcdatamodeld in Sources */,
 				9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */,
+				9EC0A83E29796FED000DE4DC /* UIColor+Extension.swift in Sources */,
+				9EC0A83C2979330B000DE4DC /* SettingVC.swift in Sources */,
 				9E27132B296FFFAF00067263 /* AppDelegate.swift in Sources */,
 				9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */,
 				9EC0A82C2971567D000DE4DC /* UILabel+FormatStyle.swift in Sources */,
 				9E27132D296FFFAF00067263 /* SceneDelegate.swift in Sources */,
+				9EC0A83929792185000DE4DC /* UINavigationController+Extension.swift in Sources */,
 				9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */,
 				9EC0A83729782AE2000DE4DC /* UIApplication+Extension.swift in Sources */,
 			);

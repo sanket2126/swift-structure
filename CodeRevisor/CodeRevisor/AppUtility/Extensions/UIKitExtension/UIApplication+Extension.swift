@@ -15,7 +15,7 @@ extension UIApplication {
      */
     func getAppUIWindow() -> UIWindow? {
         if #available(iOS 13.0, *) {
-            if let window = UIApplication.shared.keyWindow {
+            if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                 return window
             }
             return sceneDelegate?.window
