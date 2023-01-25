@@ -30,17 +30,8 @@ class HomeVC: UIViewController {
         return setting
     }
     
-    private var tblView : UITableView = {
-        let tbl = UITableView(frame: CGRect(), style: .grouped)
-        tbl.backGroundColor(color: .clear)
-        tbl.estimatedRowHeight = UITableView.automaticDimension
-        tbl.showsVerticalScrollIndicator = false
-        tbl.alwaysBounceHorizontal = false
-        tbl.alwaysBounceVertical = false
-        tbl.separatorStyle = .none
-//        tbl.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
-        return tbl
-    }()
+    private var collCategory : UICollectionView!
+    
     //------------------------------------------------------
     
     //MARK:- Class Variable
@@ -75,21 +66,37 @@ class HomeVC: UIViewController {
     //------------------------------------------------------
     
     //MARK:- Custom Method
-    
     /**
      Basic view setup of the screen.
      */
     private func setUpView() {
         view.backgroundColor = .primaryBackground
-        navigationItem.title = "HOME"
-        navigationController?.setThemeNavigation()
-        navigationItem.rightBarButtonItems = [settings, addLearning]
-        
+        setupNavigation()
+        setupCollectionView()
         addViews()
     }
     
+    fileprivate func setupCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+//        layout.estimatedItemSize = .zero
+//        layout.sectionInset = .zero
+        collCategory = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collCategory.backGroundColor(color: .lightText)
+//        collCategory.delegate = self
+//        collCategory.dataSource = self
+        collCategory.showsVerticalScrollIndicator = false
+        collCategory.showsHorizontalScrollIndicator = false
+        collCategory.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+    }
+    
+    fileprivate func setupNavigation() {
+        navigationItem.title = "HOME"
+        navigationController?.setThemeNavigation()
+        navigationItem.rightBarButtonItems = [settings, addLearning]
+    }
+    
     private func addViews() {
-        view.addSubview(tblView, anchors: [
+        view.addSubview(collCategory, anchors: [
             .leading(0), .trailing(0),
             .topMargin(0), .bottomMargin(0),
         ])
@@ -108,4 +115,21 @@ class HomeVC: UIViewController {
         debugPrint("Setting button tapped")
     }
     //------------------------------------------------------
+}
+
+// MARK: - Collection Delegates & Datasource
+extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 200)
+    }
 }

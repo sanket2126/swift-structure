@@ -28,6 +28,9 @@
 		9EC0A83929792185000DE4DC /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83829792185000DE4DC /* UINavigationController+Extension.swift */; };
 		9EC0A83C2979330B000DE4DC /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83B2979330B000DE4DC /* SettingVC.swift */; };
 		9EC0A83E29796FED000DE4DC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A83D29796FED000DE4DC /* UIColor+Extension.swift */; };
+		9ED3F389297A58DB0043968D /* QuestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3F388297A58DB0043968D /* QuestionsCell.swift */; };
+		9ED3F38D297A65480043968D /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3F38C297A65480043968D /* QuestionVC.swift */; };
+		9ED3F390297ACE640043968D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3F38F297ACE640043968D /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		9EC0A83829792185000DE4DC /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		9EC0A83B2979330B000DE4DC /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		9EC0A83D29796FED000DE4DC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		9ED3F388297A58DB0043968D /* QuestionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCell.swift; sourceTree = "<group>"; };
+		9ED3F38C297A65480043968D /* QuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
+		9ED3F38F297ACE640043968D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +160,7 @@
 		9EC0A81829700C9F000DE4DC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9ED3F386297A58030043968D /* Cell */,
 				9EC0A83A297932E5000DE4DC /* Setting */,
 				9EC0A81D29700D34000DE4DC /* Home */,
 			);
@@ -197,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				9EC0A81E29701554000DE4DC /* HomeVC.swift */,
+				9ED3F38C297A65480043968D /* QuestionVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -265,6 +273,31 @@
 				9EC0A83B2979330B000DE4DC /* SettingVC.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		9ED3F386297A58030043968D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9ED3F38E297ACE390043968D /* Collection */,
+				9ED3F387297A58110043968D /* Table */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		9ED3F387297A58110043968D /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				9ED3F388297A58DB0043968D /* QuestionsCell.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		9ED3F38E297ACE390043968D /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9ED3F38F297ACE640043968D /* CategoryCell.swift */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC0A81F29701554000DE4DC /* HomeVC.swift in Sources */,
+				9ED3F390297ACE640043968D /* CategoryCell.swift in Sources */,
 				9EC0A82F2971567D000DE4DC /* UIView+FormatStyle.swift in Sources */,
 				9EC0A82B2971567D000DE4DC /* ThemeStyle.swift in Sources */,
 				9EC0A82E2971567D000DE4DC /* FormatStyle.swift in Sources */,
@@ -412,6 +446,8 @@
 				9E27132D296FFFAF00067263 /* SceneDelegate.swift in Sources */,
 				9EC0A83929792185000DE4DC /* UINavigationController+Extension.swift in Sources */,
 				9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */,
+				9ED3F389297A58DB0043968D /* QuestionsCell.swift in Sources */,
+				9ED3F38D297A65480043968D /* QuestionVC.swift in Sources */,
 				9EC0A83729782AE2000DE4DC /* UIApplication+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
