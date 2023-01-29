@@ -14,7 +14,7 @@ extension UIFont {
         case light                   = "Verdana Light"
         case regular                 = "Verdana"
         case medium                  = "Verdana Medium"
-        case semibold                = "Verdana SemiBold"
+//        case semibold                = "Verdana SemiBold"
         case bold                    = "Verdana Bold"
     }
     

@@ -25,7 +25,7 @@ enum Theme {
     var theme : ThemeStyle {
         switch self {
         case .redTitle :
-            return ThemeStyle(textColor: .red, backGroundColor: UIColor.clear, fontName: .semibold, fontSize: 18)
+            return ThemeStyle(textColor: .red, backGroundColor: UIColor.clear, fontName: .bold, fontSize: 18)
             
         case .emailDomainText:
             return ThemeStyle(textColor: .black, backGroundColor: UIColor.clear, fontName: .regular, fontSize: 10)
