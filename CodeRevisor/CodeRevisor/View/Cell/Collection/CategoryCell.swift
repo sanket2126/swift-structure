@@ -11,23 +11,26 @@ class CategoryCell: UICollectionViewCell {
     
     static let identifier = "CategoryCell"
     
-    private var lblName:UILabel {
+    private lazy var lblName: UILabel = {
         let lbl = UILabel()
-        lbl.textColor(color: .primaryText)
-            .font(name: .semibold,size: 14)
-            .textAlignment = .center
+        lbl.textColor(color: .white)
+            .font(name: .semibold,size: 16)
+            .numberOfLines = 0
+        lbl.textAlignment = .center
         return lbl
-    }
-    private var bgView: UIView {
+    }()
+    private lazy var bgView: UIView = {
         let view = UIView()
-        view.backGroundColor(color: .primaryText.withAlphaComponent(0.05))
+        view.backGroundColor(color: .primaryBackground)
             .cornerRadius(cornerRadius: 12)
+            .borderColor(color: .red)
+            .shadow()
         return view
-    }
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -40,13 +43,16 @@ class CategoryCell: UICollectionViewCell {
     
     private func setupViews() {
         addSubview(bgView, anchors: [
-            .leading(12), .trailing(-12),
-            .top(12), .bottom(-12)
+            .leading(0), .trailing(0),
+            .top(0), .bottom(0)
         ])
-        
         bgView.addSubview(lblName, anchors: [
-            .leading(8), .trailing(8),
-            .centerY(0)
+            .centerY(0),
+            .leading(4), .trailing(-4)
         ])
+    }
+    
+    func configureCell(index: IndexPath) {
+        lblName.text = "Some long description at Index \(index.row + 1)"
     }
 }

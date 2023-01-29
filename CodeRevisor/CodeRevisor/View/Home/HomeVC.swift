@@ -31,6 +31,9 @@ class HomeVC: UIViewController {
     }
     
     private var collCategory : UICollectionView!
+    let spacing: CGFloat = 12
+    let spacingBetweenCell: CGFloat = 12
+    let numberOfItemInCell:Int = 2
     
     //------------------------------------------------------
     
@@ -78,14 +81,15 @@ class HomeVC: UIViewController {
     
     fileprivate func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-//        layout.estimatedItemSize = .zero
-//        layout.sectionInset = .zero
+        layout.minimumInteritemSpacing = spacingBetweenCell
+        layout.minimumLineSpacing = spacingBetweenCell
         collCategory = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collCategory.backGroundColor(color: .lightText)
-//        collCategory.delegate = self
-//        collCategory.dataSource = self
+        collCategory.contentInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        collCategory.delegate = self
+        collCategory.dataSource = self
         collCategory.showsVerticalScrollIndicator = false
         collCategory.showsHorizontalScrollIndicator = false
+        collCategory.backGroundColor(color: .clear)
         collCategory.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }
     
@@ -120,16 +124,19 @@ class HomeVC: UIViewController {
 // MARK: - Collection Delegates & Datasource
 extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+        cell.configureCell(index: indexPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 200)
+        let hSpace = (2 * spacing) + (CGFloat((numberOfItemInCell - 1)) * spacingBetweenCell)
+        let width = (collectionView.bounds.width - hSpace) / CGFloat(numberOfItemInCell)
+        
+        return CGSize(width: width, height: width)
     }
 }
