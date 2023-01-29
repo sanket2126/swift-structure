@@ -31,6 +31,10 @@
 		9ED3F389297A58DB0043968D /* QuestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3F388297A58DB0043968D /* QuestionsCell.swift */; };
 		9ED3F38D297A65480043968D /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3F38C297A65480043968D /* QuestionVC.swift */; };
 		9ED3F390297ACE640043968D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3F38F297ACE640043968D /* CategoryCell.swift */; };
+		9EE648C1298668F500707B41 /* CategoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE648C0298668F500707B41 /* CategoryHeaderCell.swift */; };
+		9EED1B782986B4CD00AC754E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B772986B4CD00AC754E /* Constants.swift */; };
+		9EED1B7B2986BD3800AC754E /* GeneralPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B7A2986BD3800AC754E /* GeneralPopupVC.swift */; };
+		9EED1B7D2986C63500AC754E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B7C2986C63500AC754E /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,10 @@
 		9ED3F388297A58DB0043968D /* QuestionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCell.swift; sourceTree = "<group>"; };
 		9ED3F38C297A65480043968D /* QuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
 		9ED3F38F297ACE640043968D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		9EE648C0298668F500707B41 /* CategoryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderCell.swift; sourceTree = "<group>"; };
+		9EED1B772986B4CD00AC754E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9EED1B7A2986BD3800AC754E /* GeneralPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPopupVC.swift; sourceTree = "<group>"; };
+		9EED1B7C2986C63500AC754E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +168,7 @@
 		9EC0A81829700C9F000DE4DC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9EED1B792986BD0600AC754E /* Popups */,
 				9ED3F386297A58030043968D /* Cell */,
 				9EC0A83A297932E5000DE4DC /* Setting */,
 				9EC0A81D29700D34000DE4DC /* Home */,
@@ -212,6 +221,7 @@
 		9EC0A820297020C0000DE4DC /* AppUtility */ = {
 			isa = PBXGroup;
 			children = (
+				9EED1B762986B4B700AC754E /* Constants */,
 				9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */,
 				9EC0A82529715665000DE4DC /* FormatStyle */,
 				9EC0A822297028A4000DE4DC /* Subclass */,
@@ -255,6 +265,7 @@
 				9EC0A83629782AE2000DE4DC /* UIApplication+Extension.swift */,
 				9EC0A831297157B2000DE4DC /* UIFont+Extension.swift */,
 				9EC0A83D29796FED000DE4DC /* UIColor+Extension.swift */,
+				9EED1B7C2986C63500AC754E /* UIView+Extension.swift */,
 			);
 			path = UIKitExtension;
 			sourceTree = "<group>";
@@ -296,8 +307,25 @@
 			isa = PBXGroup;
 			children = (
 				9ED3F38F297ACE640043968D /* CategoryCell.swift */,
+				9EE648C0298668F500707B41 /* CategoryHeaderCell.swift */,
 			);
 			path = Collection;
+			sourceTree = "<group>";
+		};
+		9EED1B762986B4B700AC754E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9EED1B772986B4CD00AC754E /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		9EED1B792986BD0600AC754E /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				9EED1B7A2986BD3800AC754E /* GeneralPopupVC.swift */,
+			);
+			path = Popups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,14 +460,18 @@
 			files = (
 				9EC0A81F29701554000DE4DC /* HomeVC.swift in Sources */,
 				9ED3F390297ACE640043968D /* CategoryCell.swift in Sources */,
+				9EE648C1298668F500707B41 /* CategoryHeaderCell.swift in Sources */,
 				9EC0A82F2971567D000DE4DC /* UIView+FormatStyle.swift in Sources */,
 				9EC0A82B2971567D000DE4DC /* ThemeStyle.swift in Sources */,
 				9EC0A82E2971567D000DE4DC /* FormatStyle.swift in Sources */,
 				9EC0A82D2971567D000DE4DC /* Nsobject+FormatStyle.swift in Sources */,
 				9E271335296FFFAF00067263 /* CodeRevisor.xcdatamodeld in Sources */,
+				9EED1B7B2986BD3800AC754E /* GeneralPopupVC.swift in Sources */,
 				9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */,
+				9EED1B7D2986C63500AC754E /* UIView+Extension.swift in Sources */,
 				9EC0A83E29796FED000DE4DC /* UIColor+Extension.swift in Sources */,
 				9EC0A83C2979330B000DE4DC /* SettingVC.swift in Sources */,
+				9EED1B782986B4CD00AC754E /* Constants.swift in Sources */,
 				9E27132B296FFFAF00067263 /* AppDelegate.swift in Sources */,
 				9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */,
 				9EC0A82C2971567D000DE4DC /* UILabel+FormatStyle.swift in Sources */,

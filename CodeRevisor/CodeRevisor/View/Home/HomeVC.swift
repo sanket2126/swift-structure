@@ -91,6 +91,7 @@ class HomeVC: UIViewController {
         collCategory.showsHorizontalScrollIndicator = false
         collCategory.backGroundColor(color: .clear)
         collCategory.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+        collCategory.register(CategoryHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderCell.identifier)
     }
     
     fileprivate func setupNavigation() {
@@ -110,7 +111,10 @@ class HomeVC: UIViewController {
     
     //MARK:- Action Method
     @objc private func addNewLeason() {
-        debugPrint("Add button tapped")
+        let nextvc = GeneralPopupVC()
+        nextvc.modalPresentationStyle = .overCurrentContext
+        nextvc.modalTransitionStyle = .crossDissolve
+        self.present(nextvc, animated: true)
     }
     
     @objc private func openSettings() {
@@ -138,5 +142,26 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         let width = (collectionView.bounds.width - hSpace) / CGFloat(numberOfItemInCell)
         
         return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let hSpace = (2 * spacing) + (CGFloat((numberOfItemInCell - 1)) * spacingBetweenCell)
+        let width = (collectionView.bounds.width - hSpace) / CGFloat(numberOfItemInCell)
+        
+        return CGSize(width: width/2, height: width/2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader :
+            if let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderCell.identifier, for: indexPath) as? CategoryHeaderCell {
+                
+                return header
+            } else {
+                assert(false, "Unexpected element kind")
+            }
+        default :
+            assert(false, "Unexpected element kind")
+        }
     }
 }

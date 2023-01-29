@@ -13,8 +13,8 @@ class CategoryCell: UICollectionViewCell {
     
     private lazy var lblName: UILabel = {
         let lbl = UILabel()
-        lbl.textColor(color: .white)
-            .font(name: .semibold,size: 16)
+        lbl.textColor(color: .primaryText)
+            .font(name: .bold,size: 16)
             .numberOfLines = 0
         lbl.textAlignment = .center
         return lbl
@@ -23,7 +23,6 @@ class CategoryCell: UICollectionViewCell {
         let view = UIView()
         view.backGroundColor(color: .primaryBackground)
             .cornerRadius(cornerRadius: 12)
-            .borderColor(color: .red)
             .shadow()
         return view
     }()
@@ -43,8 +42,8 @@ class CategoryCell: UICollectionViewCell {
     
     private func setupViews() {
         addSubview(bgView, anchors: [
-            .leading(0), .trailing(0),
-            .top(0), .bottom(0)
+            .leading(4), .trailing(-4),
+            .top(4), .bottom(-4)
         ])
         bgView.addSubview(lblName, anchors: [
             .centerY(0),

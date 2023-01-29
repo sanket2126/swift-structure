@@ -29,7 +29,7 @@ extension ViewStyle where Self: UIView {
         return self
     }
     
-    @discardableResult func shadow(color: UIColor = .primaryText, radius: CGFloat = 3.0 ,shadowOffset : CGSize = CGSize(width: 2.0, height: 1.0) , shadowOpacity : Float = 0.7) -> Self {
+    @discardableResult func shadow(color: UIColor = .primaryText, radius: CGFloat = 3.0 ,shadowOffset : CGSize = CGSize(width: 2.0, height: 1.0) , shadowOpacity : Float = 0.4) -> Self {
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowOffset = shadowOffset
