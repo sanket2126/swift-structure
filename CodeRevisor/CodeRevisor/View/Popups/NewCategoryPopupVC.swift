@@ -1,13 +1,13 @@
 //
-//  GeneralPopupVC.swift
+//  NewCategoryPopupVC.swift
 //  CodeRevisor
 //
-//  Created by Sanket Parmar on 29/01/23.
+//  Created by Sanket Parmar on 30/01/23.
 //
 
 import UIKit
 
-class GeneralPopupVC: UIViewController {
+class NewCategoryPopupVC: UIViewController {
     
     //MARK:- Outlet
     private lazy var centerView : UIView = {
@@ -16,15 +16,27 @@ class GeneralPopupVC: UIViewController {
             .cornerRadius(cornerRadius: 12)
         return view
     }()
+
+    private lazy var txtCategory: UITextField = {
+        let txt = UITextField()
+        txt.textColor(color: .primaryBackground)
+            .font(name: .medium,size: 15)
+            .backGroundColor(color: .primaryText)
+            .cornerRadius(cornerRadius: 10)
+            .activate(anchors: [
+                .height(44)
+            ])
+        return txt
+    }()
     
-    private var lblTitle: TitleLabel = TitleLabel()
-    private var lblDesc: DescLabel = DescLabel()
+    private lazy var lblTitle: TitleLabel = TitleLabel()
+    private lazy var lblDesc: DescLabel = DescLabel()
     
-    private var btnCancel: RedButton = RedButton()
-    private var btnDone: GreenButton = GreenButton()
+    private lazy var btnDone: GreenButton = GreenButton()
+    private lazy var btnCancel: RedButton = RedButton()
     
-    private let vStack: UIStackView = UIStackView()
-    private let hStack: UIStackView = UIStackView()
+    private lazy var vStack: UIStackView = UIStackView()
+    private lazy var hStack: UIStackView = UIStackView()
     
     //------------------------------------------------------
     
@@ -65,6 +77,7 @@ class GeneralPopupVC: UIViewController {
     
     fileprivate func setVStack() {
         vStack.addArrangedSubview(lblTitle)
+        vStack.addArrangedSubview(txtCategory)
         vStack.addArrangedSubview(lblDesc)
         vStack.addArrangedSubview(hStack)
         vStack.spacing = 12
@@ -104,8 +117,8 @@ class GeneralPopupVC: UIViewController {
     }
     
     func setData() {
-        lblDesc.text = "Some description here"
-        lblTitle.text = "Title here"
+        lblDesc.text = "If category with same name exist then it will not be re created."
+        lblTitle.text = Constants.newCategory
         btnDone.setTitle(Constants.confirm, for: .normal)
         btnCancel.setTitle(Constants.cancel, for: .normal)
     }
