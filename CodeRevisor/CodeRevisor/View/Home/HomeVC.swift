@@ -155,7 +155,12 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         switch kind {
         case UICollectionView.elementKindSectionHeader :
             if let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderCell.identifier, for: indexPath) as? CategoryHeaderCell {
-                
+                header.addTapGestureRecognizer {
+                    let nextvc = NewCategoryPopupVC()
+                    nextvc.modalPresentationStyle = .overCurrentContext
+                    nextvc.modalTransitionStyle = .crossDissolve
+                    self.present(nextvc, animated: true)
+                }
                 return header
             } else {
                 assert(false, "Unexpected element kind")

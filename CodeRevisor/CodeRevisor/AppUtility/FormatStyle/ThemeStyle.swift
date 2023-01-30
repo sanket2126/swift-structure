@@ -19,16 +19,16 @@ struct ThemeStyle {
 // Make your own theme
 // Create theme only if your application has global theme
 enum Theme {
-    case redTitle
-    case emailDomainText
+    case title
+    case descriptionLabel
     
     var theme : ThemeStyle {
         switch self {
-        case .redTitle :
-            return ThemeStyle(textColor: .red, backGroundColor: UIColor.clear, fontName: .bold, fontSize: 18)
+        case .title :
+            return ThemeStyle(textColor: .primaryText, backGroundColor: UIColor.clear, fontName: .bold, fontSize: 17)
             
-        case .emailDomainText:
-            return ThemeStyle(textColor: .black, backGroundColor: UIColor.clear, fontName: .regular, fontSize: 10)
+        case .descriptionLabel:
+            return ThemeStyle(textColor: .gray, backGroundColor: UIColor.clear, fontName: .medium, fontSize: 15)
         }
     }
 }

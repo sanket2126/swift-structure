@@ -9,4 +9,8 @@ import Foundation
 
 struct Constants {
     static let addCategory = "Add Category"
+    static let newCategory = "Enter new category name"
+    static let confirm = "Confirm"
+    static let cancel = "Cancel"
+    
 }

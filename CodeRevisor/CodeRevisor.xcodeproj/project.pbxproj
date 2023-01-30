@@ -35,6 +35,12 @@
 		9EED1B782986B4CD00AC754E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B772986B4CD00AC754E /* Constants.swift */; };
 		9EED1B7B2986BD3800AC754E /* GeneralPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B7A2986BD3800AC754E /* GeneralPopupVC.swift */; };
 		9EED1B7D2986C63500AC754E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B7C2986C63500AC754E /* UIView+Extension.swift */; };
+		9EED1B7F2987BEDC00AC754E /* PersistantStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B7E2987BEDC00AC754E /* PersistantStorage.swift */; };
+		9EED1B9B2987F83400AC754E /* CDCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B992987F83400AC754E /* CDCategory+CoreDataClass.swift */; };
+		9EED1B9C2987F83400AC754E /* CDCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B9A2987F83400AC754E /* CDCategory+CoreDataProperties.swift */; };
+		9EED1B9E2987F89500AC754E /* NewCategoryPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B9D2987F89500AC754E /* NewCategoryPopupVC.swift */; };
+		9EED1BA02988221A00AC754E /* UILabel+Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1B9F2988221A00AC754E /* UILabel+Class.swift */; };
+		9EED1BA2298824F300AC754E /* UIButton+Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED1BA1298824F300AC754E /* UIButton+Class.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +93,12 @@
 		9EED1B772986B4CD00AC754E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9EED1B7A2986BD3800AC754E /* GeneralPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPopupVC.swift; sourceTree = "<group>"; };
 		9EED1B7C2986C63500AC754E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		9EED1B7E2987BEDC00AC754E /* PersistantStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantStorage.swift; sourceTree = "<group>"; };
+		9EED1B992987F83400AC754E /* CDCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9EED1B9A2987F83400AC754E /* CDCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9EED1B9D2987F89500AC754E /* NewCategoryPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryPopupVC.swift; sourceTree = "<group>"; };
+		9EED1B9F2988221A00AC754E /* UILabel+Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Class.swift"; sourceTree = "<group>"; };
+		9EED1BA1298824F300AC754E /* UIButton+Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Class.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +206,9 @@
 		9EC0A81B29700CDD000DE4DC /* Coredata */ = {
 			isa = PBXGroup;
 			children = (
+				9EED1B8F2987EAF600AC754E /* Support */,
 				9E271333296FFFAF00067263 /* CodeRevisor.xcdatamodeld */,
+				9EED1B7E2987BEDC00AC754E /* PersistantStorage.swift */,
 			);
 			path = Coredata;
 			sourceTree = "<group>";
@@ -242,6 +256,8 @@
 		9EC0A822297028A4000DE4DC /* Subclass */ = {
 			isa = PBXGroup;
 			children = (
+				9EED1BA1298824F300AC754E /* UIButton+Class.swift */,
+				9EED1B9F2988221A00AC754E /* UILabel+Class.swift */,
 			);
 			path = Subclass;
 			sourceTree = "<group>";
@@ -324,8 +340,26 @@
 			isa = PBXGroup;
 			children = (
 				9EED1B7A2986BD3800AC754E /* GeneralPopupVC.swift */,
+				9EED1B9D2987F89500AC754E /* NewCategoryPopupVC.swift */,
 			);
 			path = Popups;
+			sourceTree = "<group>";
+		};
+		9EED1B8F2987EAF600AC754E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				9EED1B902987EB0000AC754E /* Category */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		9EED1B902987EB0000AC754E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9EED1B992987F83400AC754E /* CDCategory+CoreDataClass.swift */,
+				9EED1B9A2987F83400AC754E /* CDCategory+CoreDataProperties.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,8 +494,10 @@
 			files = (
 				9EC0A81F29701554000DE4DC /* HomeVC.swift in Sources */,
 				9ED3F390297ACE640043968D /* CategoryCell.swift in Sources */,
+				9EED1B9B2987F83400AC754E /* CDCategory+CoreDataClass.swift in Sources */,
 				9EE648C1298668F500707B41 /* CategoryHeaderCell.swift in Sources */,
 				9EC0A82F2971567D000DE4DC /* UIView+FormatStyle.swift in Sources */,
+				9EED1B7F2987BEDC00AC754E /* PersistantStorage.swift in Sources */,
 				9EC0A82B2971567D000DE4DC /* ThemeStyle.swift in Sources */,
 				9EC0A82E2971567D000DE4DC /* FormatStyle.swift in Sources */,
 				9EC0A82D2971567D000DE4DC /* Nsobject+FormatStyle.swift in Sources */,
@@ -469,16 +505,20 @@
 				9EED1B7B2986BD3800AC754E /* GeneralPopupVC.swift in Sources */,
 				9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */,
 				9EED1B7D2986C63500AC754E /* UIView+Extension.swift in Sources */,
+				9EED1BA2298824F300AC754E /* UIButton+Class.swift in Sources */,
 				9EC0A83E29796FED000DE4DC /* UIColor+Extension.swift in Sources */,
 				9EC0A83C2979330B000DE4DC /* SettingVC.swift in Sources */,
 				9EED1B782986B4CD00AC754E /* Constants.swift in Sources */,
 				9E27132B296FFFAF00067263 /* AppDelegate.swift in Sources */,
+				9EED1BA02988221A00AC754E /* UILabel+Class.swift in Sources */,
 				9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */,
 				9EC0A82C2971567D000DE4DC /* UILabel+FormatStyle.swift in Sources */,
 				9E27132D296FFFAF00067263 /* SceneDelegate.swift in Sources */,
 				9EC0A83929792185000DE4DC /* UINavigationController+Extension.swift in Sources */,
 				9EC0A832297157B2000DE4DC /* UIFont+Extension.swift in Sources */,
+				9EED1B9C2987F83400AC754E /* CDCategory+CoreDataProperties.swift in Sources */,
 				9ED3F389297A58DB0043968D /* QuestionsCell.swift in Sources */,
+				9EED1B9E2987F89500AC754E /* NewCategoryPopupVC.swift in Sources */,
 				9ED3F38D297A65480043968D /* QuestionVC.swift in Sources */,
 				9EC0A83729782AE2000DE4DC /* UIApplication+Extension.swift in Sources */,
 			);
