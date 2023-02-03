@@ -1,6 +1,6 @@
 //
 //  UILabel+Class.swift
-//  MVVMBasicStructure
+//  CodeRevisor
 //
 //  Created by Sanket on 22/09/20.
 //  Copyright © 2020 Sanket. All rights reserved.

@@ -2,7 +2,7 @@
 //  CDCategory+CoreDataProperties.swift
 //  CodeRevisor
 //
-//  Created by Sanket Parmar on 30/01/23.
+//  Created by Sanket Parmar on 03/02/23.
 //
 //
 
@@ -17,7 +17,11 @@ extension CDCategory {
     }
 
     @NSManaged public var category: String!
+    @NSManaged public var id: UUID!
 
+    func convertToCategories() -> Categories {
+        return Categories(category: self.category, id: self.id)
+    }
 }
 
 extension CDCategory : Identifiable {

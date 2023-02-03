@@ -1,6 +1,6 @@
 //
 //  ScreenSize.swift
-//  MVVMBasicStructure
+//  CodeRevisor
 //
 //  Created by Sanket on 28/02/21.
 //

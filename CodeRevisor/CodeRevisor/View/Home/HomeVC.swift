@@ -107,6 +107,19 @@ class HomeVC: UIViewController {
         ])
     }
     
+    private func setupViewModelObserver() {
+        // Success list observer
+//        self.viewModel.result.bind { [weak self] (result) in
+//            switch result {
+//            case .success(_):
+//
+//            case .failure(let error):
+//                break
+//
+//            case .none: break
+//            }
+//        }
+    }
     //------------------------------------------------------
     
     //MARK:- Action Method

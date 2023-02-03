@@ -22,13 +22,31 @@ enum Theme {
     case title
     case descriptionLabel
     
+    case redButton
+    case greenButton
+    case themeButton
+    
     var theme : ThemeStyle {
         switch self {
+//-------------------------------LABEL-------------------------------
         case .title :
             return ThemeStyle(textColor: .primaryText, backGroundColor: UIColor.clear, fontName: .bold, fontSize: 17)
             
         case .descriptionLabel:
             return ThemeStyle(textColor: .gray, backGroundColor: UIColor.clear, fontName: .medium, fontSize: 15)
+            
+//-------------------------------BUTTON-------------------------------
+        case .redButton:
+            return ThemeStyle(textColor: .red, backGroundColor: UIColor.clear, fontName: .bold, fontSize: 14)
+            
+        case .greenButton:
+            return ThemeStyle(textColor: .green, backGroundColor: UIColor.clear, fontName: .bold, fontSize: 14)
+            
+        case .themeButton:
+            return ThemeStyle(textColor: .primaryBackground, backGroundColor: .primaryText, fontName: .bold, fontSize: 15)
+            
+//-------------------------------VIEW-------------------------------
+            
         }
     }
 }

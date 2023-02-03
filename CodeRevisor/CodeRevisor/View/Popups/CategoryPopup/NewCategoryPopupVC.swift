@@ -17,17 +17,7 @@ class NewCategoryPopupVC: UIViewController {
         return view
     }()
 
-    private lazy var txtCategory: UITextField = {
-        let txt = UITextField()
-        txt.textColor(color: .primaryBackground)
-            .font(name: .medium,size: 15)
-            .backGroundColor(color: .primaryText)
-            .cornerRadius(cornerRadius: 10)
-            .activate(anchors: [
-                .height(44)
-            ])
-        return txt
-    }()
+    private var txtCategory: ThemeTextField = ThemeTextField()
     
     private lazy var lblTitle: TitleLabel = TitleLabel()
     private lazy var lblDesc: DescLabel = DescLabel()
@@ -41,6 +31,7 @@ class NewCategoryPopupVC: UIViewController {
     //------------------------------------------------------
     
     //MARK:- Class Variable
+    private var viewModel = NewCategoryViewModel()
     
     //------------------------------------------------------
     
@@ -88,14 +79,21 @@ class NewCategoryPopupVC: UIViewController {
      Basic view setup of the screen.
      */
     private func setUpView() {
-        view.backGroundColor(color: .primaryText.withAlphaComponent(0.5))
+        view.backGroundColor(color: .primaryText.withAlphaComponent(0.1))
         view.addTapGestureRecognizer {
+            self.view.endEditing(true)
             self.dismiss(animated: true)
         }
         view.addSubview(centerView, anchors: [
             .leading(12), .trailing(-12),
             .centerY(0)
         ])
+        
+        txtCategory.activate(anchors: [
+            .height(44)
+        ])
+        txtCategory.delegate = self
+        txtCategory.becomeFirstResponder()
         
         setHStack()
         setVStack()
@@ -126,6 +124,20 @@ class NewCategoryPopupVC: UIViewController {
     
     //MARK:- Action Method
     
-    
     //------------------------------------------------------
 }
+
+extension NewCategoryPopupVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isBackspace() {
+            return true
+        }
+        if textField == txtCategory {
+            return string.isValid(.alphabetNumWithSpace)
+        }
+        
+        return true
+    }
+}
+
+
