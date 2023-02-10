@@ -10,9 +10,9 @@ import Foundation
 struct CategoryManager {
     private let _categoryRepo = CategoryDataRepository()
     
-//    func createCategory(category: Categories) {
-//        _categoryRepo.create()
-//    }
+    func createCategory(category: Categories) {
+        _categoryRepo.create(category: category)
+    }
     
     func fetchCategory() -> [Categories]? {
         _categoryRepo.getAll()

@@ -13,17 +13,21 @@ struct Categories {
 }
 
 protocol CategoryRepository {
-//    func create(category: CDCategory)
+    func create(category: Categories)
     func getAll() -> [Categories]?
-//    func get(byIdentifier id: String) -> CDCategory?
-//    func update(category: CDCategory) -> Bool
+//    func get(byIdentifier id: String) -> Categories?
+//    func update(category: Categories) -> Bool
 //    func delete(byIdentifier id: String) -> Bool
 }
 
 struct CategoryDataRepository: CategoryRepository {
-//    func create(category: CDCategory) {
-//        <#code#>
-//    }
+    
+    func create(category: Categories) {
+        let cat = CDCategory(context: PersistantStorage.shared.context)
+        cat.category = category.category
+        cat.id = category.id
+        PersistantStorage.shared.saveContext()
+    }
     
     func getAll() -> [Categories]? {
         let result = PersistantStorage.shared.fetchManagedObject(managedObject: CDCategory.self)

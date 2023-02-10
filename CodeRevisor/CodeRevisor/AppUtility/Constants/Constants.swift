@@ -13,4 +13,6 @@ struct Constants {
     static let confirm = "Confirm"
     static let cancel = "Cancel"
     
+    static let emptyCategoryCollectionMsg = "Tap on add category button and create one to see the list."
+    
 }

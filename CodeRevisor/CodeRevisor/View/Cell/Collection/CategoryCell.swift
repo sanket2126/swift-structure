@@ -51,7 +51,7 @@ class CategoryCell: UICollectionViewCell {
         ])
     }
     
-    func configureCell(index: IndexPath) {
-        lblName.text = "Some long description at Index \(index.row + 1)"
+    func configureCell(category: Categories) {
+        lblName.text = category.category
     }
 }

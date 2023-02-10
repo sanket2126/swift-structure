@@ -32,6 +32,8 @@ class NewCategoryPopupVC: UIViewController {
     
     //MARK:- Class Variable
     private var viewModel = NewCategoryViewModel()
+    private var manager = CategoryManager()
+    var newCreated: (() -> ())?
     
     //------------------------------------------------------
     
@@ -115,15 +117,27 @@ class NewCategoryPopupVC: UIViewController {
     }
     
     func setData() {
-        lblDesc.text = "If category with same name exist then it will not be re created."
+        lblDesc.text = "" //"If category with same name exist then it will not be re created."
         lblTitle.text = Constants.newCategory
         btnDone.setTitle(Constants.confirm, for: .normal)
         btnCancel.setTitle(Constants.cancel, for: .normal)
+        
+        btnDone.addTarget(self, action: #selector(btnActionDone), for: .touchUpInside)
+        btnCancel.addTarget(self, action: #selector(btnActionCancel), for: .touchUpInside)
     }
     //------------------------------------------------------
     
     //MARK:- Action Method
+    @objc func btnActionDone() {
+        manager.createCategory(category: Categories(category: txtCategory.cleanTrimmedText, id: UUID()))
+        self.dismiss(animated: true) {
+            self.newCreated?()
+        }
+    }
     
+    @objc func btnActionCancel() {
+        self.dismiss(animated: true)
+    }
     //------------------------------------------------------
 }
 

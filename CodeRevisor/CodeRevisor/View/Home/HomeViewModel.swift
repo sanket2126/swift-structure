@@ -32,8 +32,8 @@ extension HomeViewModel {
     /// Get list row.
     /// - Parameter index: Table index.
     /// - Returns: Return List object data.
-    func listRow(for index: Int) -> String {
-        categories[index].category
+    func listRow(for index: Int) -> Categories {
+        categories[index]
     }
 }
 
@@ -41,5 +41,6 @@ extension HomeViewModel {
 
     func fetchAll() {
         categories = manager.fetchCategory() ?? []
+        result.value = .success(nil)
     }
 }

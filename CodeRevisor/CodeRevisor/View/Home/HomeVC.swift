@@ -30,6 +30,7 @@ class HomeVC: UIViewController {
         return setting
     }
     
+    private var viewModel = HomeViewModel()
     private var collCategory : UICollectionView!
     let spacing: CGFloat = 12
     let spacingBetweenCell: CGFloat = 12
@@ -76,7 +77,9 @@ class HomeVC: UIViewController {
         view.backgroundColor = .primaryBackground
         setupNavigation()
         setupCollectionView()
+        setupViewModelObserver()
         addViews()
+        viewModel.fetchAll()
     }
     
     fileprivate func setupCollectionView() {
@@ -109,16 +112,16 @@ class HomeVC: UIViewController {
     
     private func setupViewModelObserver() {
         // Success list observer
-//        self.viewModel.result.bind { [weak self] (result) in
-//            switch result {
-//            case .success(_):
-//
-//            case .failure(let error):
-//                break
-//
-//            case .none: break
-//            }
-//        }
+        self.viewModel.result.bind { [weak self] (result) in
+            switch result {
+            case .success(_):
+                break
+            case .failure(_):
+                break
+            case .none: break
+            }
+            self?.collCategory.reloadData()
+        }
     }
     //------------------------------------------------------
     
@@ -141,12 +144,17 @@ class HomeVC: UIViewController {
 // MARK: - Collection Delegates & Datasource
 extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if viewModel.numberOfListRow() == 0 {
+            collectionView.setEmptyMessage(Constants.emptyCategoryCollectionMsg)
+        } else {
+            collectionView.restoreEmptyMessage()
+        }
+        return viewModel.numberOfListRow()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
-        cell.configureCell(index: indexPath)
+        cell.configureCell(category: self.viewModel.listRow(for: indexPath.row))
         return cell
     }
     
@@ -172,6 +180,9 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                     let nextvc = NewCategoryPopupVC()
                     nextvc.modalPresentationStyle = .overCurrentContext
                     nextvc.modalTransitionStyle = .crossDissolve
+                    nextvc.newCreated = { [weak self] in
+                        self?.viewModel.fetchAll()
+                    }
                     self.present(nextvc, animated: true)
                 }
                 return header

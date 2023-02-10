@@ -11,8 +11,7 @@ class NewCategoryViewModel {
     
     //MARK:- Class Variable
     private(set) var result = Bindable<Result<String?, AppError>>()
-//    private var categories: [Categories] = []
-    private var manager = CategoryManager()
+//    private var manager = CategoryManager()
     
     //MARK:- Deinit
     deinit {
@@ -35,6 +34,6 @@ extension NewCategoryViewModel {
 //extension NewCategoryViewModel {
 //
 //    func create(category: Categories) -> AppError? {
-//        manager.
+//        manager.createCategory(category: category)
 //    }
 //}
