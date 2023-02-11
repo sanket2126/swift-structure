@@ -20,17 +20,22 @@ struct ThemeStyle {
 // Create theme only if your application has global theme
 enum Theme {
     case title
+    case centerLabel
     case descriptionLabel
     
     case redButton
     case greenButton
     case themeButton
+    case plainButton
     
     var theme : ThemeStyle {
         switch self {
 //-------------------------------LABEL-------------------------------
         case .title :
             return ThemeStyle(textColor: .primaryText, backGroundColor: UIColor.clear, fontName: .bold, fontSize: 17)
+            
+        case .centerLabel:
+            return ThemeStyle(textColor: .primaryText, backGroundColor: .clear, fontName: .bold, fontSize: 16)
             
         case .descriptionLabel:
             return ThemeStyle(textColor: .gray, backGroundColor: UIColor.clear, fontName: .medium, fontSize: 15)
@@ -44,6 +49,9 @@ enum Theme {
             
         case .themeButton:
             return ThemeStyle(textColor: .primaryBackground, backGroundColor: .primaryText, fontName: .bold, fontSize: 15)
+            
+        case .plainButton:
+            return ThemeStyle(textColor: .primaryText, backGroundColor: .clear, fontName: .bold, fontSize: 15)
             
 //-------------------------------VIEW-------------------------------
             

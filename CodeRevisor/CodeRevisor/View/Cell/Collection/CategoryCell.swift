@@ -11,14 +11,10 @@ class CategoryCell: UICollectionViewCell {
     
     static let identifier = "CategoryCell"
     
-    private lazy var lblName: UILabel = {
-        let lbl = UILabel()
-        lbl.textColor(color: .primaryText)
-            .font(name: .bold,size: 16)
-            .numberOfLines = 0
-        lbl.textAlignment = .center
-        return lbl
-    }()
+    private lazy var lblName: CenterLabel = CenterLabel()
+    lazy var btnDelete: PlainButton = PlainButton()
+    lazy var btnEdit: PlainButton = PlainButton()
+    
     private lazy var bgView: UIView = {
         let view = UIView()
         view.backGroundColor(color: .primaryBackground)
@@ -41,6 +37,12 @@ class CategoryCell: UICollectionViewCell {
     }
     
     private func setupViews() {
+        btnDelete.setImage(UIImage(systemName: "trash.fill"), for: .normal)
+        btnDelete.tintColor = .red
+        
+        btnEdit.setImage(UIImage(systemName: "pencil.circle.fill"), for: .normal)
+        btnEdit.tintColor = .green
+        
         addSubview(bgView, anchors: [
             .leading(4), .trailing(-4),
             .top(4), .bottom(-4)
@@ -48,6 +50,13 @@ class CategoryCell: UICollectionViewCell {
         bgView.addSubview(lblName, anchors: [
             .centerY(0),
             .leading(4), .trailing(-4)
+        ])
+        bgView.addSubview(btnDelete, anchors: [
+            .top(8), .leading(8)
+        ])
+        
+        bgView.addSubview(btnEdit, anchors: [
+            .top(8), .trailing(-8)
         ])
     }
     

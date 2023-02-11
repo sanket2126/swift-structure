@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E09279729966A120006CA38 /* TTGSnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09279629966A120006CA38 /* TTGSnackBar.swift */; };
+		9E09279A29966A7E0006CA38 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09279929966A7E0006CA38 /* Alert.swift */; };
 		9E27132B296FFFAF00067263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27132A296FFFAF00067263 /* AppDelegate.swift */; };
 		9E27132D296FFFAF00067263 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E27132C296FFFAF00067263 /* SceneDelegate.swift */; };
 		9E271335296FFFAF00067263 /* CodeRevisor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E271333296FFFAF00067263 /* CodeRevisor.xcdatamodeld */; };
@@ -75,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E09279629966A120006CA38 /* TTGSnackBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTGSnackBar.swift; sourceTree = "<group>"; };
+		9E09279929966A7E0006CA38 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9E271327296FFFAF00067263 /* CodeRevisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeRevisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E27132A296FFFAF00067263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E27132C296FFFAF00067263 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +158,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E09279529966A040006CA38 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				9E09279629966A120006CA38 /* TTGSnackBar.swift */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		9E09279829966A7E0006CA38 /* AppAlert */ = {
+			isa = PBXGroup;
+			children = (
+				9E09279929966A7E0006CA38 /* Alert.swift */,
+			);
+			path = AppAlert;
+			sourceTree = "<group>";
+		};
 		9E27131E296FFFAF00067263 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +197,7 @@
 		9E271329296FFFAF00067263 /* CodeRevisor */ = {
 			isa = PBXGroup;
 			children = (
+				9E09279529966A040006CA38 /* ThirdParty */,
 				9EC0A81C29700D10000DE4DC /* Base */,
 				9EC0A81B29700CDD000DE4DC /* Coredata */,
 				9EC0A81A29700CC1000DE4DC /* Resources */,
@@ -271,6 +292,7 @@
 				9EC0A82529715665000DE4DC /* FormatStyle */,
 				9EC0A822297028A4000DE4DC /* Subclass */,
 				9EC0A82129702899000DE4DC /* Extensions */,
+				9E09279829966A7E0006CA38 /* AppAlert */,
 			);
 			path = AppUtility;
 			sourceTree = "<group>";
@@ -576,8 +598,10 @@
 				9E271335296FFFAF00067263 /* CodeRevisor.xcdatamodeld in Sources */,
 				9EED1B7B2986BD3800AC754E /* GeneralPopupVC.swift in Sources */,
 				9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */,
+				9E09279A29966A7E0006CA38 /* Alert.swift in Sources */,
 				9EED1BC1298D1D2900AC754E /* NetworkError.swift in Sources */,
 				9EED1BB3298D1C0D00AC754E /* NewCategoryViewModel.swift in Sources */,
+				9E09279729966A120006CA38 /* TTGSnackBar.swift in Sources */,
 				9EED1B7D2986C63500AC754E /* UIView+Extension.swift in Sources */,
 				9EED1BA2298824F300AC754E /* UIButton+Class.swift in Sources */,
 				9EED1BA62988FA8D00AC754E /* UITextField+Class.swift in Sources */,

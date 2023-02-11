@@ -155,6 +155,12 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
         cell.configureCell(category: self.viewModel.listRow(for: indexPath.row))
+        
+        cell.btnDelete.indexPath = indexPath
+        cell.btnDelete.addTarget(self, action: #selector(deleteCategory(_:)), for: .touchUpInside)
+        
+        cell.btnEdit.indexPath = indexPath
+        cell.btnEdit.addTarget(self, action: #selector(editCategory(_:)), for: .touchUpInside)
         return cell
     }
     
@@ -191,6 +197,23 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             }
         default :
             assert(false, "Unexpected element kind")
+        }
+    }
+    
+    @objc private func deleteCategory(_ sender: Any) {
+        viewModel.deleteCategory(index: (sender as? PlainButton)?.indexPath)
+    }
+    
+    @objc private func editCategory(_ sender: Any) {
+        if let i = (sender as? PlainButton)?.indexPath?.row {
+            let nextvc = NewCategoryPopupVC()
+            nextvc.modalPresentationStyle = .overCurrentContext
+            nextvc.modalTransitionStyle = .crossDissolve
+            nextvc.editCategory = viewModel.listRow(for: i)
+            nextvc.newCreated = { [weak self] in
+                self?.viewModel.fetchAll()
+            }
+            self.present(nextvc, animated: true)
         }
     }
 }

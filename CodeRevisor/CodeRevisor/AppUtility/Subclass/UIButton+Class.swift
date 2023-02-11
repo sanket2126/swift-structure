@@ -45,6 +45,31 @@ class ThemeButton: UIButton {
     }
 }
 
+class PlainButton: UIButton {
+    
+    var indexPath: IndexPath?
+    
+    // FOR DESIGN VIA CODE
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initialize()
+    }
+    
+    // FOR DESIGN VIA CODE
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
+    }
+    
+    func initialize() {
+        
+        self.applyTheme(themeStyle: .plainButton)
+        if let _ = self.imageView?.image {
+            self.centerTextAndImage(spacing: 12)
+        }
+    }
+}
+
 class GreenButton: UIButton {
     // FOR DESIGN VIA CODE
     required init?(coder: NSCoder) {

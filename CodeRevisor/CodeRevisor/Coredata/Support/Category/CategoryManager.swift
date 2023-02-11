@@ -18,12 +18,15 @@ struct CategoryManager {
         _categoryRepo.getAll()
     }
     
-//    func fetchCategory(byID : UUID) -> Categories? {
-//    }
+    func fetchCategory(byID : UUID) -> Categories? {
+        _categoryRepo.get(byID: byID)
+    }
     
-//    func updateCategory(category: Categories) -> Bool {
-//    }
+    func updateCategory(category: Categories) -> Bool {
+        _categoryRepo.update(category: category)
+    }
     
-//    func deleteCategory(category: Categories) -> Bool {
-//    }
+    func deleteCategory(category: Categories) -> Bool {
+        _categoryRepo.delete(byID: category.id)
+    }
 }

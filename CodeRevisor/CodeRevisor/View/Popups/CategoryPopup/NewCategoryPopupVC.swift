@@ -33,6 +33,7 @@ class NewCategoryPopupVC: UIViewController {
     //MARK:- Class Variable
     private var viewModel = NewCategoryViewModel()
     private var manager = CategoryManager()
+    var editCategory: Categories?
     var newCreated: (() -> ())?
     
     //------------------------------------------------------
@@ -118,7 +119,8 @@ class NewCategoryPopupVC: UIViewController {
     
     func setData() {
         lblDesc.text = "" //"If category with same name exist then it will not be re created."
-        lblTitle.text = Constants.newCategory
+        lblTitle.text = (editCategory == nil) ? Constants.newCategory : Constants.editCategory
+        txtCategory.text = (editCategory == nil) ? "" : (editCategory?.category ?? "")
         btnDone.setTitle(Constants.confirm, for: .normal)
         btnCancel.setTitle(Constants.cancel, for: .normal)
         
@@ -129,9 +131,17 @@ class NewCategoryPopupVC: UIViewController {
     
     //MARK:- Action Method
     @objc func btnActionDone() {
-        manager.createCategory(category: Categories(category: txtCategory.cleanTrimmedText, id: UUID()))
-        self.dismiss(animated: true) {
-            self.newCreated?()
+        if let er = viewModel.isValidView(category: txtCategory.cleanTrimmedText) {
+            Alert.shared.showSnackBar(er.errorDescription ?? "",isError: true)
+        } else {
+            if let cat = editCategory {
+                let _ = manager.updateCategory(category: Categories(category: txtCategory.cleanTrimmedText, id: cat.id))
+            } else {
+                manager.createCategory(category: Categories(category: txtCategory.cleanTrimmedText, id: UUID()))
+            }
+            self.dismiss(animated: true) {
+                self.newCreated?()
+            }
         }
     }
     

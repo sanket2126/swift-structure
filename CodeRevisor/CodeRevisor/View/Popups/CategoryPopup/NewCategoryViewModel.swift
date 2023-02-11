@@ -24,16 +24,9 @@ extension NewCategoryViewModel {
     
     /// Validate fields
     /// - Returns: If any validation error found return error message else nil.
-    private func isValidView(category: String) -> AppError? {
+    func isValidView(category: String) -> AppError? {
         
-        guard !category.isEmpty else { return AppError.validation(type: .category) }
+        guard !category.removeAllSpace().isEmpty else { return AppError.validation(type: .category) }
         return nil
     }
 }
-
-//extension NewCategoryViewModel {
-//
-//    func create(category: Categories) -> AppError? {
-//        manager.createCategory(category: category)
-//    }
-//}
