@@ -32,8 +32,8 @@ struct CategoryManager {
         _categoryRepo.update(category: category)
     }
     
-    func deleteCategory(category: Categories) -> Bool {
-        _categoryRepo.delete(byID: category.id)
+    func deleteCategory(id : UUID) -> Bool {
+        _categoryRepo.delete(byID: id)
     }
 }
 

@@ -45,7 +45,7 @@ extension HomeViewModel {
     }
     
     func deleteCategory(index: IndexPath?) {
-        if let i = index?.item, manager.deleteCategory(category: categories[i]) {
+        if let i = index?.item, manager.deleteCategory(id: categories[i].id) {
             fetchAll()
         } else {
             Alert.shared.showSnackBar("Error while deleting", isError: true)
