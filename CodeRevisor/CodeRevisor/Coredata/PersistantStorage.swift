@@ -8,37 +8,45 @@
 import Foundation
 import CoreData
 
+enum StoreType {
+  case inMemory, onDisk
+}
+
+//protocol PersistentStore {
+//    var persistentContainer: NSPersistentContainer { get set }
+//    func saveContext()
+//    func fetchManagedObject<T: NSManagedObject>(managedObject: T.Type) -> [T]?
+//}
+
 // MARK: - Core Data stack
-final class PersistantStorage {
+class PersistantStorage {
+
+    static let shared: PersistantStorage = PersistantStorage()
     
-    static let shared = PersistantStorage()
-    lazy var context = persistentContainer.viewContext
-    
-    private init() {}
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CodeRevisor")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//    lazy var context = persistentContainer.viewContext
+    let persistentContainer: NSPersistentContainer = NSPersistentContainer(name: "CodeRevisor")
+
+    init(storeType: StoreType = .onDisk) {
+
+        if storeType == .inMemory {
+            let description = NSPersistentStoreDescription()
+            description.url = URL(fileURLWithPath: "/dev/null")
+            description.type = NSInMemoryStoreType
+            persistentContainer.persistentStoreDescriptions = [description]
+        }
+        
+        persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        return container
-    }()
+    }
 
     // MARK: - Core Data Saving support
     func saveContext () {
-        if context.hasChanges {
+        if persistentContainer.viewContext.hasChanges {
             do {
-                try context.save()
+                try persistentContainer.viewContext.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -48,7 +56,7 @@ final class PersistantStorage {
     
     func fetchManagedObject<T: NSManagedObject>(managedObject: T.Type) -> [T]? {
         do {
-            guard let result = try PersistantStorage.shared.context.fetch(managedObject.fetchRequest()) as? [T] else { return nil }
+            guard let result = try persistentContainer.viewContext.fetch(managedObject.fetchRequest()) as? [T] else { return nil }
             
             return result
         } catch let error {

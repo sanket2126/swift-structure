@@ -21,21 +21,22 @@ protocol CategoryRepository {
 }
 
 struct CategoryDataRepository: CategoryRepository {
+    var persistantStorage: PersistantStorage!
     
     func create(category: Categories) {
         let exist = getAll()?.contains(where: { $0.category.removeAllSpace().lowercased() == category.category.removeAllSpace().lowercased() }) ?? false
         if !exist {
-            let cat = CDCategory(context: PersistantStorage.shared.context)
+            let cat = CDCategory(context: persistantStorage.persistentContainer.viewContext)
             cat.category = category.category
             cat.id = category.id
-            PersistantStorage.shared.saveContext()
+            persistantStorage.saveContext()
         } else {
             Alert.shared.showSnackBar("Already exists",isError: true)
         }
     }
     
     func getAll() -> [Categories]? {
-        let result = PersistantStorage.shared.fetchManagedObject(managedObject: CDCategory.self)
+        let result = persistantStorage.fetchManagedObject(managedObject: CDCategory.self)
         
         var categories: [Categories] = []
         result?.forEach({
@@ -54,7 +55,7 @@ struct CategoryDataRepository: CategoryRepository {
         let cdCategory = getCDCategory(byId: category.id)
         guard cdCategory != nil else { return false }
         cdCategory?.category = category.category
-        PersistantStorage.shared.saveContext()
+        persistantStorage.saveContext()
         return true
     }
 
@@ -62,8 +63,8 @@ struct CategoryDataRepository: CategoryRepository {
         let cdCategory = getCDCategory(byId: id)
         guard let d = cdCategory else { return false }
         
-        PersistantStorage.shared.context.delete(d)
-        PersistantStorage.shared.saveContext()
+        persistantStorage.persistentContainer.viewContext.delete(d)
+        persistantStorage.saveContext()
         return true
     }
     
@@ -72,7 +73,7 @@ struct CategoryDataRepository: CategoryRepository {
         let predicate = NSPredicate(format: "id==%@", id as CVarArg)
         fetchRequest.predicate = predicate
         do {
-            let result = try PersistantStorage.shared.context.fetch(fetchRequest).first
+            let result = try persistantStorage.persistentContainer.viewContext.fetch(fetchRequest).first
 //            guard let data = result?.convertToCategories() else { return nil }
             return result
         } catch let error {
