@@ -118,5 +118,4 @@ public extension UINavigationController {
         transition.type = CATransitionType(rawValue: type)
         self.view.layer.add(transition, forKey: nil)
     }
-
 }
