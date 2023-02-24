@@ -12,7 +12,7 @@ class QuestionVC: UIViewController {
     //MARK:- Outlet
     private var tblView : UITableView = {
         let tbl = UITableView(frame: CGRect(), style: .grouped)
-        tbl.backGroundColor(color: .clear)
+        tbl.backGroundColor(color: .primaryBackground)
         tbl.estimatedRowHeight = UITableView.automaticDimension
         tbl.showsVerticalScrollIndicator = false
         tbl.alwaysBounceHorizontal = false
@@ -21,13 +21,32 @@ class QuestionVC: UIViewController {
         tbl.register(QuestionsCell.self, forCellReuseIdentifier: QuestionsCell.identifier)
         return tbl
     }()
+    
+    private var addLearning: UIBarButtonItem {
+        let add = UIBarButtonItem(
+            image: UIImage(systemName: "plus.app.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(addNewLeason))
+        add.fontSize(size: 30).tintColor = .primaryText
+        return add
+    }
     //------------------------------------------------------
     
     //MARK:- Class Variable
-    
+    private var selectedCategory: Categories!
     //------------------------------------------------------
     
     //MARK:- Life Cycle Method
+    init(category: Categories!) {
+        self.selectedCategory = category
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -62,8 +81,18 @@ class QuestionVC: UIViewController {
      Basic view setup of the screen.
      */
     private func setUpView() {
-        navigationItem.title = "Questions"
+        navigationItem.title = "\(selectedCategory.category) questions"
+        navigationItem.rightBarButtonItems = [addLearning]
+        setConstrains()
         setupDelegates()
+    }
+    
+    private func setConstrains() {
+        view.addSubview(tblView, anchors: [
+            .leading(0), .trailing(0),
+            .top(0), .bottom(0)
+        ])
+        
     }
     
     private func setupDelegates() {
@@ -73,7 +102,12 @@ class QuestionVC: UIViewController {
     //------------------------------------------------------
     
     //MARK:- Action Method
-    
+    @objc private func addNewLeason() {
+//        let nextvc = GeneralPopupVC()
+//        nextvc.modalPresentationStyle = .overCurrentContext
+//        nextvc.modalTransitionStyle = .crossDissolve
+//        self.present(nextvc, animated: true)
+    }
     
     //------------------------------------------------------
 }
@@ -81,7 +115,7 @@ class QuestionVC: UIViewController {
 // MARK: - Table Delegates & Datasource
 extension QuestionVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6//viewModel.numberOfListRow()
+        return 12//viewModel.numberOfListRow()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,7 +125,5 @@ extension QuestionVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let nextvc = CategoryVC()
-//        navigationController?.pushViewController(nextvc, animated: true)
     }
 }

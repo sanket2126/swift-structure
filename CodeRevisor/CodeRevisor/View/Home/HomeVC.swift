@@ -15,7 +15,7 @@ class HomeVC: UIViewController {
             image: UIImage(systemName: "plus.app.fill"),
             style: .plain,
             target: self,
-            action: #selector(addNewLeason))
+            action: #selector(addNewCategory))
         add.fontSize(size: 30).tintColor = .primaryText
         return add
     }
@@ -126,7 +126,7 @@ class HomeVC: UIViewController {
     //------------------------------------------------------
     
     //MARK:- Action Method
-    @objc private func addNewLeason() {
+    @objc private func addNewCategory() {
         let nextvc = GeneralPopupVC()
         nextvc.modalPresentationStyle = .overCurrentContext
         nextvc.modalTransitionStyle = .crossDissolve
@@ -141,8 +141,18 @@ class HomeVC: UIViewController {
     //------------------------------------------------------
 }
 
-// MARK: - Collection Delegates & Datasource
-extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// MARK: - Collection Delegates
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextvc = QuestionVC(category: viewModel.listRow(for: indexPath.item))
+//        let nextvc = QuestionVC()
+//        nextvc.selectedCategory = viewModel.listRow(for: indexPath.item)
+        self.navigationController?.pushViewController(nextvc, animated: true)
+    }
+}
+
+// MARK: - Collection Datasource
+extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if viewModel.numberOfListRow() == 0 {
             collectionView.setEmptyMessage(Constants.emptyCategoryCollectionMsg)
@@ -151,33 +161,33 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         }
         return viewModel.numberOfListRow()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
         cell.configureCell(category: self.viewModel.listRow(for: indexPath.row))
-        
+
         cell.btnDelete.indexPath = indexPath
         cell.btnDelete.addTarget(self, action: #selector(deleteCategory(_:)), for: .touchUpInside)
-        
+
         cell.btnEdit.indexPath = indexPath
         cell.btnEdit.addTarget(self, action: #selector(editCategory(_:)), for: .touchUpInside)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let hSpace = (2 * spacing) + (CGFloat((numberOfItemInCell - 1)) * spacingBetweenCell)
         let width = (collectionView.bounds.width - hSpace) / CGFloat(numberOfItemInCell)
-        
+
         return CGSize(width: width, height: width)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let hSpace = (2 * spacing) + (CGFloat((numberOfItemInCell - 1)) * spacingBetweenCell)
         let width = (collectionView.bounds.width - hSpace) / CGFloat(numberOfItemInCell)
-        
+
         return CGSize(width: width/2, height: width/2)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader :
@@ -199,11 +209,11 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             assert(false, "Unexpected element kind")
         }
     }
-    
+
     @objc private func deleteCategory(_ sender: Any) {
         viewModel.deleteCategory(index: (sender as? PlainButton)?.indexPath)
     }
-    
+
     @objc private func editCategory(_ sender: Any) {
         if let i = (sender as? PlainButton)?.indexPath?.row {
             let nextvc = NewCategoryPopupVC()
