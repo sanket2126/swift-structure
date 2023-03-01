@@ -13,9 +13,9 @@ class QuestionsCell: UITableViewCell {
     private var mainView = UIView()
     private var hStack = UIStackView()
     private var vStack = UIStackView()
-    private var lblName = UILabel()
-    private var lblDate = UILabel()
-    private var lblPrice = UILabel()
+    private var lblQuery = SubTitleLabel()
+    private var lblAnswer = GreenLabel()
+    private var lblDate = NoteLabel()
     private var imgUser = UIImageView()
      
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -41,8 +41,12 @@ class QuestionsCell: UITableViewCell {
     }
     
     private func setupVStack() {
-        vStack.addArrangedSubview(lblName)
-        vStack.addArrangedSubview(lblDate)
+        let h2Stack = UIStackView()
+        h2Stack.addArrangedSubview(lblQuery)
+        h2Stack.addArrangedSubview(lblDate)
+        
+        vStack.addArrangedSubview(h2Stack)
+        vStack.addArrangedSubview(lblAnswer)
     }
     
     private func setupHStack() {
@@ -50,10 +54,13 @@ class QuestionsCell: UITableViewCell {
             .leading(8), .trailing(-8),
             .top(8), .bottom(-8)
         ])
-
-        hStack.addArrangedSubview(imgUser)
+        let view = UIView()
+        view.backGroundColor(color: .clear)
+        view.addSubview(imgUser, anchors: [
+            .top(0), .leading(0), .trailing(0)
+        ])
+        hStack.addArrangedSubview(view)
         hStack.addArrangedSubview(vStack)
-        hStack.addArrangedSubview(lblPrice)
     }
     
     private func setupView() {
@@ -62,7 +69,7 @@ class QuestionsCell: UITableViewCell {
             .top(8) , .bottom(-8)
         ])
         imgUser.activate(anchors: [
-            .width(50)
+            .width(50), .height(50)
         ])
         
         mainView.backGroundColor(color: .white).cornerRadius(cornerRadius: 8).shadow()
@@ -85,29 +92,21 @@ class QuestionsCell: UITableViewCell {
     }
     
     private func configureLabels() {
-        lblName.font(name: .bold, size: 14).textColor(color: .primaryText)
-        lblName.setContentHuggingPriority(UILayoutPriority.dragThatCanResizeScene, for: .vertical)
-        lblName.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
+//        lblQuery.numberOfLines = 2
+        lblQuery.setContentHuggingPriority(UILayoutPriority.dragThatCanResizeScene, for: .vertical)
+        lblQuery.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
         
-        lblPrice.font(name: .bold, size: 14).textColor(color: .primaryText)
-        lblPrice.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
-        lblPrice.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
         
-//        lblDate.font(name: .semiBold, size: 13).textColor(color: .primaryText)
-        lblDate.setContentHuggingPriority(UILayoutPriority.dragThatCanResizeScene, for: .vertical)
-        lblDate.setContentHuggingPriority(UILayoutPriority.dragThatCannotResizeScene, for: .horizontal)
-        lblDate.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
+        lblAnswer.numberOfLines = 3
+        lblAnswer.setContentHuggingPriority(UILayoutPriority.dragThatCanResizeScene, for: .vertical)
+        lblAnswer.setContentHuggingPriority(UILayoutPriority.dragThatCannotResizeScene, for: .horizontal)
+        lblAnswer.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
     }
     
     func configureData() {
-        lblName.text = "Name"//data.title
-        lblDate.text = "Date"//data.date
-        lblPrice.text = "$23.0"//"\(data.price)"
-        imgUser.image = UIImage(systemName: "questionmark.diamond.fill")//data.image
-//        if data.price < 0 {
-//            lblPrice.textColor(color: .red)
-//        } else {
-//            lblPrice.textColor(color: .systemGreen)
-//        }
+        lblQuery.text = "Difference between Async and Sync"//data.title
+        lblAnswer.text = "Async Task works simulatenously on multiple thread while Sync Task is executed sequentially one after the other."
+        lblDate.text = "26 Dec\n2022"
+        imgUser.image = UIImage(systemName: "questionmark.diamond.fill")
     }
 }
