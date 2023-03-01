@@ -56,6 +56,28 @@ class DescLabel: UILabel {
     }
 }
 
+class PaddingLabel: UILabel {
+
+    var padding: UIEdgeInsets = UIEdgeInsets()
+
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: padding))
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + padding.left + padding.right,
+                      height: size.height + padding.top + padding.bottom)
+    }
+
+    override var bounds: CGRect {
+        didSet {
+            // ensures this works within stack views if multi-line
+            preferredMaxLayoutWidth = bounds.width - (padding.left + padding.right)
+        }
+    }
+}
+
 class CenterLabel: UILabel {
     
     // FOR DESIGN VIA CODE
@@ -77,24 +99,67 @@ class CenterLabel: UILabel {
     }
 }
 
-class PaddingLabel: UILabel {
-
-    var padding: UIEdgeInsets = UIEdgeInsets()
-
-    override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: padding))
+class GreenLabel: UILabel {
+    // FOR DESIGN VIA CODE
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initialize()
     }
-
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + padding.left + padding.right,
-                      height: size.height + padding.top + padding.bottom)
+    
+    // FOR DESIGN VIA CODE
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
     }
+    
+    func initialize() {
+        
+        self.applyTheme(themeStyle: .greenLabel)
+        numberOfLines = 0
+        textAlignment = .left
+    }
+}
 
-    override var bounds: CGRect {
-        didSet {
-            // ensures this works within stack views if multi-line
-            preferredMaxLayoutWidth = bounds.width - (padding.left + padding.right)
-        }
+class NoteLabel: UILabel {
+    // FOR DESIGN VIA CODE
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initialize()
+    }
+    
+    // FOR DESIGN VIA CODE
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
+    }
+    
+    func initialize() {
+        
+        self.applyTheme(themeStyle: .noteLabel)
+        numberOfLines = 2
+        setContentHuggingPriority(.required, for: .horizontal)
+        setContentCompressionResistancePriority(.required, for: .horizontal)
+        textAlignment = .center
+    }
+}
+
+class SubTitleLabel: UILabel {
+    
+    // FOR DESIGN VIA CODE
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initialize()
+    }
+    
+    // FOR DESIGN VIA CODE
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
+    }
+    
+    func initialize() {
+        self.applyTheme(themeStyle: .subtitle)
+        numberOfLines = 2
+        textAlignment = .left
     }
 }
