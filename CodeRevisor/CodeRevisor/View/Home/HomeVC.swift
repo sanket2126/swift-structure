@@ -31,7 +31,7 @@ class HomeVC: UIViewController {
     }
     
     private var viewModel = HomeViewModel()
-    private var collCategory : UICollectionView!
+    private var collCategory: UICollectionView!
     let spacing: CGFloat = 12
     let spacingBetweenCell: CGFloat = 12
     let numberOfItemInCell:Int = 2
@@ -145,8 +145,6 @@ class HomeVC: UIViewController {
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextvc = QuestionVC(category: viewModel.listRow(for: indexPath.item))
-//        let nextvc = QuestionVC()
-//        nextvc.selectedCategory = viewModel.listRow(for: indexPath.item)
         self.navigationController?.pushViewController(nextvc, animated: true)
     }
 }
