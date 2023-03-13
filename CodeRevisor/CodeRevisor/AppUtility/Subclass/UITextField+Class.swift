@@ -50,6 +50,12 @@ class ThemeTextField: UITextField {
         initialize()
     }
     
+    convenience init(_placeHolder: String?) {
+        self.init(frame: .infinite)
+        placeholder = _placeHolder
+        placeHolderColor = .primaryBackground.withAlphaComponent(0.7)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

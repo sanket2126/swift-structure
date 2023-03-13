@@ -103,10 +103,10 @@ class QuestionVC: UIViewController {
     
     //MARK:- Action Method
     @objc private func addNewLeason() {
-//        let nextvc = GeneralPopupVC()
-//        nextvc.modalPresentationStyle = .overCurrentContext
-//        nextvc.modalTransitionStyle = .crossDissolve
-//        self.present(nextvc, animated: true)
+        let nextvc = QuestionsPopupVC(questionsPopupModel: QuestionsPopupModel(selectedCategory: selectedCategory))
+        nextvc.modalPresentationStyle = .overCurrentContext
+        nextvc.modalTransitionStyle = .crossDissolve
+        self.present(nextvc, animated: true)
     }
     
     //------------------------------------------------------

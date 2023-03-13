@@ -15,6 +15,9 @@
 		9E27133A296FFFB100067263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E271338296FFFB100067263 /* LaunchScreen.storyboard */; };
 		9E9B3D6B29A478A100DFD45C /* TTGSnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09279629966A120006CA38 /* TTGSnackBar.swift */; };
 		9E9B3D9229A5C56D00DFD45C /* CodeRevisorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3D9129A5C56D00DFD45C /* CodeRevisorTests.swift */; };
+		9E9B3D9A29B0F21F00DFD45C /* QuestionsPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3D9929B0F21F00DFD45C /* QuestionsPopupVC.swift */; };
+		9E9B3D9C29B0F57D00DFD45C /* UITextView+Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3D9B29B0F57D00DFD45C /* UITextView+Class.swift */; };
+		9E9B3D9E29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3D9D29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift */; };
 		9EC0A81F29701554000DE4DC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A81E29701554000DE4DC /* HomeVC.swift */; };
 		9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */; };
 		9EC0A82B2971567D000DE4DC /* ThemeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A8262971567D000DE4DC /* ThemeStyle.swift */; };
@@ -79,6 +82,9 @@
 		9E27133B296FFFB100067263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E9B3D8F29A5C56D00DFD45C /* CodeRevisorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeRevisorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9B3D9129A5C56D00DFD45C /* CodeRevisorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRevisorTests.swift; sourceTree = "<group>"; };
+		9E9B3D9929B0F21F00DFD45C /* QuestionsPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPopupVC.swift; sourceTree = "<group>"; };
+		9E9B3D9B29B0F57D00DFD45C /* UITextView+Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Class.swift"; sourceTree = "<group>"; };
+		9E9B3D9D29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPopupViewModel.swift; sourceTree = "<group>"; };
 		9EC0A81E29701554000DE4DC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
 		9EC0A8262971567D000DE4DC /* ThemeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeStyle.swift; sourceTree = "<group>"; };
@@ -196,6 +202,15 @@
 			path = CodeRevisorTests;
 			sourceTree = "<group>";
 		};
+		9E9B3D9829B0F1F500DFD45C /* QuestionsPopup */ = {
+			isa = PBXGroup;
+			children = (
+				9E9B3D9929B0F21F00DFD45C /* QuestionsPopupVC.swift */,
+				9E9B3D9D29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift */,
+			);
+			path = QuestionsPopup;
+			sourceTree = "<group>";
+		};
 		9EC0A81829700C9F000DE4DC /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +297,7 @@
 				9EED1BA52988FA8D00AC754E /* UITextField+Class.swift */,
 				9EED1BA1298824F300AC754E /* UIButton+Class.swift */,
 				9EED1B9F2988221A00AC754E /* UILabel+Class.swift */,
+				9E9B3D9B29B0F57D00DFD45C /* UITextView+Class.swift */,
 			);
 			path = Subclass;
 			sourceTree = "<group>";
@@ -366,6 +382,7 @@
 		9EED1B792986BD0600AC754E /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				9E9B3D9829B0F1F500DFD45C /* QuestionsPopup */,
 				9EED1BB1298D1BEB00AC754E /* CategoryPopup */,
 				9EED1B7A2986BD3800AC754E /* GeneralPopupVC.swift */,
 			);
@@ -539,6 +556,8 @@
 				9E271335296FFFAF00067263 /* CodeRevisor.xcdatamodeld in Sources */,
 				9EED1B7B2986BD3800AC754E /* GeneralPopupVC.swift in Sources */,
 				9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */,
+				9E9B3D9C29B0F57D00DFD45C /* UITextView+Class.swift in Sources */,
+				9E9B3D9A29B0F21F00DFD45C /* QuestionsPopupVC.swift in Sources */,
 				9E09279A29966A7E0006CA38 /* Alert.swift in Sources */,
 				9EED1BC1298D1D2900AC754E /* NetworkError.swift in Sources */,
 				9EED1BB3298D1C0D00AC754E /* NewCategoryViewModel.swift in Sources */,
@@ -553,6 +572,7 @@
 				9EED1BA02988221A00AC754E /* UILabel+Class.swift in Sources */,
 				9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */,
 				9EED1BC4298D281200AC754E /* CategoryManager.swift in Sources */,
+				9E9B3D9E29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift in Sources */,
 				9EC0A82C2971567D000DE4DC /* UILabel+FormatStyle.swift in Sources */,
 				9E27132D296FFFAF00067263 /* SceneDelegate.swift in Sources */,
 				9EED1BB5298D1C6600AC754E /* Bindable.swift in Sources */,
