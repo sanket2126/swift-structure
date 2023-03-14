@@ -30,7 +30,9 @@ class ThemeTextField: UITextField {
             .backGroundColor(color: .primaryText)
             .textColor(color: .primaryBackground)
             .cornerRadius(cornerRadius: 12)
-        
+            .activate(anchors: [
+                .height(44)
+            ])
         self.placeHolderColor = UIColor.gray
 //        self.superview?.shadow()
         

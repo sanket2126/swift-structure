@@ -63,7 +63,9 @@ class PlainButton: UIButton {
     
     func initialize() {
         
-        self.applyTheme(themeStyle: .plainButton)
+        self.applyTheme(themeStyle: .plainButton).setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        self.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
         if let _ = self.imageView?.image {
             self.centerTextAndImage(spacing: 12)
         }

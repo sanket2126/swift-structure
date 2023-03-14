@@ -20,12 +20,14 @@ class QuestionsPopupVC: UIViewController {
     private var txtQuestion: ThemeTextField = ThemeTextField(_placeHolder: "Question")
     private var txtAnswer: ThemeTextView = ThemeTextView()
     private var txtCategory: ThemeTextField = ThemeTextField(_placeHolder: "Category")
+    private var txtRefLinks: ThemeTextField = ThemeTextField(_placeHolder: "Reference Links")
     
     private lazy var lblTitle: TitleLabel = TitleLabel()
     private lazy var lblDesc: DescLabel = DescLabel()
     
     private lazy var btnDone: GreenButton = GreenButton()
     private lazy var btnCancel: RedButton = RedButton()
+    private lazy var btnAddLink: PlainButton = PlainButton()
     
     private lazy var vStack: UIStackView = UIStackView()
     private lazy var hStack: UIStackView = UIStackView()
@@ -79,18 +81,24 @@ class QuestionsPopupVC: UIViewController {
         vStack.addArrangedSubview(txtQuestion)
         vStack.addArrangedSubview(txtAnswer)
         vStack.addArrangedSubview(txtCategory)
+        
+        let hStk = UIStackView()
+        hStk.axis = .horizontal
+        hStk.addArrangedSubview(txtRefLinks)
+        hStk.addArrangedSubview(btnAddLink)
+        hStk.setCustomSpacing(12, after: txtRefLinks)
+        vStack.addArrangedSubview(hStk)
 
         vStack.addArrangedSubview(hStack)
         vStack.spacing = 12
         vStack.axis = .vertical
-        
     }
     
     /**
      Basic view setup of the screen.
      */
     private func setUpView() {
-        view.backGroundColor(color: .primaryText.withAlphaComponent(0.1))
+        view.backGroundColor(color: .primaryText.withAlphaComponent(0.45))
         view.addTapGestureRecognizer {
             self.view.endEditing(true)
             self.dismiss(animated: true)
@@ -100,17 +108,12 @@ class QuestionsPopupVC: UIViewController {
             .centerY(0)
         ])
         
-        txtQuestion.activate(anchors: [
-            .height(44)
-        ])
         txtAnswer.activate(anchors: [
             .height(94)
         ])
+        
         txtCategory.setRightImage(img: UIImage(systemName: "chevron.down.circle.fill"))
         //setRightView(view: UIImageView(image: ))
-        txtCategory.activate(anchors: [
-            .height(44)
-        ])
 //        txtQuestion.delegate = self
         txtQuestion.becomeFirstResponder()
         
@@ -146,11 +149,13 @@ class QuestionsPopupVC: UIViewController {
         if let c = viewModel.getSelectedt() {
             txtCategory.text = c.category
         }
+        btnAddLink.setTitle(Constants.addLink, for: .normal)
         btnDone.setTitle(Constants.confirm, for: .normal)
         btnCancel.setTitle(Constants.cancel, for: .normal)
         
         btnDone.addTarget(self, action: #selector(btnActionDone), for: .touchUpInside)
         btnCancel.addTarget(self, action: #selector(btnActionCancel), for: .touchUpInside)
+        btnAddLink.addTarget(self, action: #selector(btnActionAddLink), for: .touchUpInside)
     }
     //------------------------------------------------------
     
@@ -173,6 +178,12 @@ class QuestionsPopupVC: UIViewController {
     @objc func btnActionCancel() {
         self.dismiss(animated: true)
     }
+    
+    @objc func btnActionAddLink() {
+        txtRefLinks.text = ""
+        self.view.endEditing(true)
+    }
+    
     //------------------------------------------------------
 }
 
