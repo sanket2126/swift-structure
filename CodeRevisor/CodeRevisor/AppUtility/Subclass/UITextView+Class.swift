@@ -37,15 +37,15 @@ class ThemeTextView: UITextView {
         self.isEditable = true
         self.isSelectable = true
         
-        self.dataDetectorTypes = .link
+//        self.dataDetectorTypes = .link
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         self.isScrollEnabled = true
-        self.contentInsetAdjustmentBehavior = .never
+        self.contentInsetAdjustmentBehavior = .automatic
         self.textContainerInset = UIEdgeInsets(top: 10.0, left: 10, bottom: 4.0, right: 10)
         
         self.font(name: .medium,size: 15)
-//            .backGroundColor(color: .primaryText)
+            .backGroundColor(color: .primaryText)
             .textColor(color: .primaryBackground)
             .cornerRadius(cornerRadius: 12)
     }
@@ -58,16 +58,20 @@ class ThemeTextView: UITextView {
     }
     
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return true
+        if action == #selector(copy(_:)) || action == #selector(paste(_:)) || action == #selector(cut(_:))
+            || action == #selector(select(_:)) || action == #selector(selectAll(_:)){
+            return true
+        } // Pending issue while select and select all
+        return false
     }
     
-//    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
-//        return []
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
+        return []
+    }
+    
+//    override func caretRect(for position: UITextPosition) -> CGRect {
+//        self.bounds
 //    }
-    
-    override func caretRect(for position: UITextPosition) -> CGRect {
-        return .zero
-    }
 }
 
 
@@ -129,9 +133,9 @@ class DataDetectionTextView: UITextView {
     override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
     }
-    override func caretRect(for position: UITextPosition) -> CGRect {
-        return .zero
-    }
+//    override func caretRect(for position: UITextPosition) -> CGRect {
+//        return .zero
+//    }
 }
 
 extension DataDetectionTextView: UITextViewDelegate {
