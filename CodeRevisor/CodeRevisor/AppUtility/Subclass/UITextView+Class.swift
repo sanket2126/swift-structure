@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ThemeTextView: UITextView {
+class ThemeTextView: UITextView, UITextViewDelegate {
+    
+    private var placeholderLabel = UILabel()
     
     override init(frame: CGRect,textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -29,14 +31,17 @@ class ThemeTextView: UITextView {
     
     convenience init(_placeHolder: String?) {
         self.init(frame: .zero)
-//        placeholder = _placeHolder
-//        placeHolderColor = .primaryBackground.withAlphaComponent(0.7)
+        initialize()
+        placeholderLabel.text = _placeHolder
+        placeholderLabel.textColor = .primaryBackground.withAlphaComponent(0.7)
+        placeholderLabel.sizeToFit()
     }
     
     private func initialize() {
         self.isEditable = true
         self.isSelectable = true
         
+        delegate = self
 //        self.dataDetectorTypes = .link
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
@@ -48,6 +53,7 @@ class ThemeTextView: UITextView {
             .backGroundColor(color: .primaryText)
             .textColor(color: .primaryBackground)
             .cornerRadius(cornerRadius: 12)
+        setPlaceholder()
     }
     
     override func addGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
@@ -65,13 +71,17 @@ class ThemeTextView: UITextView {
         return false
     }
     
-    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
-        return []
+    func setPlaceholder(){
+        placeholderLabel.font = self.font
+        self.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 12, y: (self.font?.pointSize)! / 2)
+        placeholderLabel.textColor = .primaryBackground.withAlphaComponent(0.7)
+        placeholderLabel.isHidden = !self.text.isEmpty
     }
     
-//    override func caretRect(for position: UITextPosition) -> CGRect {
-//        self.bounds
-//    }
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
 }
 
 
@@ -97,8 +107,6 @@ class DataDetectionTextView: UITextView {
     
     convenience init(_placeHolder: String?) {
         self.init(frame: .infinite)
-//        placeholder = _placeHolder
-//        placeHolderColor = .primaryBackground.withAlphaComponent(0.7)
     }
     
     private func initialize() {

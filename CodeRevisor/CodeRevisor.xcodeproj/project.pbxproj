@@ -18,6 +18,10 @@
 		9E9B3D9A29B0F21F00DFD45C /* QuestionsPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3D9929B0F21F00DFD45C /* QuestionsPopupVC.swift */; };
 		9E9B3D9C29B0F57D00DFD45C /* UITextView+Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3D9B29B0F57D00DFD45C /* UITextView+Class.swift */; };
 		9E9B3D9E29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3D9D29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift */; };
+		9E9B3DA229C5A8A100DFD45C /* CDTopic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3DA029C5A8A100DFD45C /* CDTopic+CoreDataClass.swift */; };
+		9E9B3DA329C5A8A100DFD45C /* CDTopic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3DA129C5A8A100DFD45C /* CDTopic+CoreDataProperties.swift */; };
+		9E9B3DA529C615BD00DFD45C /* TopicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3DA429C615BD00DFD45C /* TopicRepository.swift */; };
+		9E9B3DA729C615CB00DFD45C /* TopicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9B3DA629C615CB00DFD45C /* TopicManager.swift */; };
 		9EC0A81F29701554000DE4DC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A81E29701554000DE4DC /* HomeVC.swift */; };
 		9EC0A824297028CA000DE4DC /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */; };
 		9EC0A82B2971567D000DE4DC /* ThemeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0A8262971567D000DE4DC /* ThemeStyle.swift */; };
@@ -85,6 +89,10 @@
 		9E9B3D9929B0F21F00DFD45C /* QuestionsPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPopupVC.swift; sourceTree = "<group>"; };
 		9E9B3D9B29B0F57D00DFD45C /* UITextView+Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Class.swift"; sourceTree = "<group>"; };
 		9E9B3D9D29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPopupViewModel.swift; sourceTree = "<group>"; };
+		9E9B3DA029C5A8A100DFD45C /* CDTopic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTopic+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9E9B3DA129C5A8A100DFD45C /* CDTopic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTopic+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9E9B3DA429C615BD00DFD45C /* TopicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicRepository.swift; sourceTree = "<group>"; };
+		9E9B3DA629C615CB00DFD45C /* TopicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicManager.swift; sourceTree = "<group>"; };
 		9EC0A81E29701554000DE4DC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		9EC0A823297028CA000DE4DC /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
 		9EC0A8262971567D000DE4DC /* ThemeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeStyle.swift; sourceTree = "<group>"; };
@@ -209,6 +217,17 @@
 				9E9B3D9D29BC9CEF00DFD45C /* QuestionsPopupViewModel.swift */,
 			);
 			path = QuestionsPopup;
+			sourceTree = "<group>";
+		};
+		9E9B3D9F29C5A5D000DFD45C /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				9E9B3DA029C5A8A100DFD45C /* CDTopic+CoreDataClass.swift */,
+				9E9B3DA129C5A8A100DFD45C /* CDTopic+CoreDataProperties.swift */,
+				9E9B3DA429C615BD00DFD45C /* TopicRepository.swift */,
+				9E9B3DA629C615CB00DFD45C /* TopicManager.swift */,
+			);
+			path = Topics;
 			sourceTree = "<group>";
 		};
 		9EC0A81829700C9F000DE4DC /* View */ = {
@@ -392,6 +411,7 @@
 		9EED1B8F2987EAF600AC754E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				9E9B3D9F29C5A5D000DFD45C /* Topics */,
 				9EED1B902987EB0000AC754E /* Category */,
 			);
 			path = Support;
@@ -543,6 +563,7 @@
 				9EED1BC7298D2BD100AC754E /* HomeViewModel.swift in Sources */,
 				9ED3F390297ACE640043968D /* CategoryCell.swift in Sources */,
 				9EED1BBF298D1D2900AC754E /* DataSourceError.swift in Sources */,
+				9E9B3DA329C5A8A100DFD45C /* CDTopic+CoreDataProperties.swift in Sources */,
 				9EED1BBD298D1D2900AC754E /* FileError.swift in Sources */,
 				9EE648C1298668F500707B41 /* CategoryHeaderCell.swift in Sources */,
 				9E9B3D6B29A478A100DFD45C /* TTGSnackBar.swift in Sources */,
@@ -553,14 +574,17 @@
 				9EC0A82E2971567D000DE4DC /* FormatStyle.swift in Sources */,
 				9EED1BAF298D160700AC754E /* CDCategory+CoreDataClass.swift in Sources */,
 				9EC0A82D2971567D000DE4DC /* Nsobject+FormatStyle.swift in Sources */,
+				9E9B3DA529C615BD00DFD45C /* TopicRepository.swift in Sources */,
 				9E271335296FFFAF00067263 /* CodeRevisor.xcdatamodeld in Sources */,
 				9EED1B7B2986BD3800AC754E /* GeneralPopupVC.swift in Sources */,
 				9EC0A83529766663000DE4DC /* ScreenSize.swift in Sources */,
 				9E9B3D9C29B0F57D00DFD45C /* UITextView+Class.swift in Sources */,
+				9E9B3DA229C5A8A100DFD45C /* CDTopic+CoreDataClass.swift in Sources */,
 				9E9B3D9A29B0F21F00DFD45C /* QuestionsPopupVC.swift in Sources */,
 				9E09279A29966A7E0006CA38 /* Alert.swift in Sources */,
 				9EED1BC1298D1D2900AC754E /* NetworkError.swift in Sources */,
 				9EED1BB3298D1C0D00AC754E /* NewCategoryViewModel.swift in Sources */,
+				9E9B3DA729C615CB00DFD45C /* TopicManager.swift in Sources */,
 				9EED1B7D2986C63500AC754E /* UIView+Extension.swift in Sources */,
 				9EED1BA2298824F300AC754E /* UIButton+Class.swift in Sources */,
 				9EED1BA62988FA8D00AC754E /* UITextField+Class.swift in Sources */,

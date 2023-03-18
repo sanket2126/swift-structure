@@ -18,12 +18,21 @@ class QuestionsPopupVC: UIViewController {
     }()
 
     private var txtQuestion: ThemeTextField = ThemeTextField(_placeHolder: "Question")
-    private var txtAnswer: ThemeTextView = ThemeTextView()
+    private var txtAnswer: ThemeTextView = ThemeTextView(_placeHolder: "Answer here")
     private var txtCategory: ThemeTextField = ThemeTextField(_placeHolder: "Category")
     private var txtRefLinks: ThemeTextField = ThemeTextField(_placeHolder: "Reference Links")
     
-    private lazy var lblTitle: TitleLabel = TitleLabel()
-    private lazy var lblDesc: DescLabel = DescLabel()
+//    private lazy var lblTitle: TitleLabel = TitleLabel()
+    private var tblView : UITableView = {
+        let tbl = UITableView(frame: CGRect())
+        tbl.activate(anchors: [.height(100)])
+        tbl.backGroundColor(color: .yellow)
+        tbl.estimatedRowHeight = UITableView.automaticDimension
+        tbl.bounces = false
+        tbl.separatorStyle = .none
+        tbl.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tbl
+    }()
     
     private lazy var btnDone: GreenButton = GreenButton()
     private lazy var btnCancel: RedButton = RedButton()
@@ -54,12 +63,24 @@ class QuestionsPopupVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+//        tblView.removeObserver(self, forKeyPath: "contentSize")
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if(keyPath == "contentSize"){
+            if let newvalue = change?[.newKey] {
+                let newsize  = newvalue as! CGSize
+                tblView.frame.size.height = min(newsize.height, 100)
+                centerView.frame.size.height = centerView.frame.size.height + tblView.frame.size.height
+            }
+        }
+        centerView.layoutSubviews()
+    }
     //------------------------------------------------------
     
     //MARK:- Memory Management Method
@@ -88,7 +109,10 @@ class QuestionsPopupVC: UIViewController {
         hStk.addArrangedSubview(btnAddLink)
         hStk.setCustomSpacing(12, after: txtRefLinks)
         vStack.addArrangedSubview(hStk)
-
+        
+        tblView.delegate = self
+        tblView.dataSource = self
+        vStack.addArrangedSubview(tblView)
         vStack.addArrangedSubview(hStack)
         vStack.spacing = 12
         vStack.axis = .vertical
@@ -145,7 +169,6 @@ class QuestionsPopupVC: UIViewController {
     }
     
     func setData() {
-        lblDesc.text = "sfodmf"
         if let c = viewModel.getSelectedt() {
             txtCategory.text = c.category
         }
@@ -215,5 +238,26 @@ extension QuestionsPopupVC: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         viewModel.listRow(for: row).category
+    }
+}
+
+// MARK: - Table Delegates & Datasource
+extension QuestionsPopupVC : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4//viewModel.numberOfListRow()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? UITableViewCell else { return UITableViewCell() }
+        cell.textLabel?.text = "URL LINK will be displayed here"
+//        cell.configureData()//data: viewModel.listRow(for: indexPath.row))
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
     }
 }
