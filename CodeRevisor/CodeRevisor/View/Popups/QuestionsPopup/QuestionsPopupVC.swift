@@ -190,7 +190,7 @@ class QuestionsPopupVC: UIViewController {
 //            if let cat = editCategory {
 //                let _ = manager.updateCategory(category: Categories(category: txtQuestion.cleanTrimmedText, id: cat.id))
 //            } else {
-//                manager.createCategory(category: Categories(category: txtQuestion.cleanTrimmedText, id: UUID()))
+//        viewModel.
 //            }
 //            self.dismiss(animated: true) {
 //                self.newCreated?()

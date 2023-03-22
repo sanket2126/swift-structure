@@ -13,7 +13,7 @@ struct Topic {
     let referal_urls: [URL]?
     let question: String
     let answer: String?
-//    let category: Categories?
+    let category: Categories?
 }
 
 protocol TopicRepository {
@@ -30,12 +30,19 @@ struct TopicDataRepository: TopicRepository {
     func create(topic: Topic) {
         let exist = getAll()?.contains(where: { $0.question.removeAllSpace().lowercased() == topic.question.removeAllSpace().lowercased() }) ?? false
         if !exist {
+            
+            var cdCategory = CDCategory(context: persistantStorage.persistentContainer.viewContext)
+//            cdCategory.id = topic.category?.id
+//            cdCategory.category = topic.category?.category
+            
             let tp = CDTopic(context: persistantStorage.persistentContainer.viewContext)
             tp.question = topic.question
             tp.answer = topic.answer
-//            tp.category = topic.category.c
             tp.reference_urls = topic.referal_urls
             tp.id = topic.id
+            
+            cdCategory.topic?.insert(tp)
+            
             persistantStorage.saveContext()
         } else {
             Alert.shared.showSnackBar("Already exists",isError: true)
@@ -63,7 +70,7 @@ struct TopicDataRepository: TopicRepository {
         guard cdTopic != nil else { return false }
         cdTopic?.question = topic.question
         cdTopic?.answer = topic.answer
-//        cdTopic?.category = topic.category.
+//        cdTopic?.category = topic.category
         cdTopic?.reference_urls = topic.referal_urls
         persistantStorage.saveContext()
         return true

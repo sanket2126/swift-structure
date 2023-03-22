@@ -23,7 +23,7 @@ extension CDTopic {
     @NSManaged public var category: CDCategory?
 
     func convertToTopic() -> Topic {
-        return Topic(id: self.id, referal_urls: self.reference_urls, question: self.question, answer: self.answer)
+        return Topic(id: self.id, referal_urls: self.reference_urls, question: self.question, answer: self.answer, category: self.category?.convertToCategories())
     }
 }
 
