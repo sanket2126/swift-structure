@@ -10,6 +10,7 @@ import CoreData
 struct Categories {
     let category: String
     let id: UUID
+    let topic: [Topic]?
 }
 
 protocol CategoryRepository {
@@ -29,6 +30,23 @@ struct CategoryDataRepository: CategoryRepository {
             let cat = CDCategory(context: persistantStorage.persistentContainer.viewContext)
             cat.category = category.category
             cat.id = category.id
+            if let topics = category.topic {
+                
+                var topicSet = Set<CDTopic>()
+                let cdTopic = CDTopic(context: persistantStorage.persistentContainer.viewContext)
+                
+                topics.forEach({ topic in
+                    cdTopic.id = topic.id
+                    cdTopic.answer = topic.answer
+                    cdTopic.question = topic.question
+                    cdTopic.reference_urls = topic.referal_urls
+                    
+                    topicSet.insert(cdTopic)
+                })
+                
+                cat.topic = topicSet
+            }
+            
             persistantStorage.saveContext()
         } else {
             Alert.shared.showSnackBar("Already exists",isError: true)

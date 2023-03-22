@@ -18,10 +18,21 @@ extension CDCategory {
 
     @NSManaged public var category: String!
     @NSManaged public var id: UUID!
-    @NSManaged public var topic: NSSet?
+    @NSManaged public var topic: Set<CDTopic>?
 
     func convertToCategories() -> Categories {
-        return Categories(category: self.category, id: self.id)
+        return Categories(category: self.category, id: self.id, topic: self.convertToTopic())
+    }
+    
+    private func convertToTopic() -> [Topic]? {
+        
+        guard self.topic != nil && self.topic?.count != 0 else { return nil }
+        var topics: [Topic] = []
+        
+        self.topic?.forEach({ topic in
+            topics.append(topic.convertToTopic())
+        })
+        return topics
     }
 }
 
@@ -35,10 +46,10 @@ extension CDCategory {
     @NSManaged public func removeFromTopic(_ value: CDTopic)
 
     @objc(addTopic:)
-    @NSManaged public func addToTopic(_ values: NSSet)
+    @NSManaged public func addToTopic(_ values: Set<CDTopic>)
 
     @objc(removeTopic:)
-    @NSManaged public func removeFromTopic(_ values: NSSet)
+    @NSManaged public func removeFromTopic(_ values: Set<CDTopic>)
 
 }
 
