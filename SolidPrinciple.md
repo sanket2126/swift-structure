@@ -7,10 +7,12 @@
 
 > ## O - Open Closed Principle
 > - Open for extension but close for modification
+> - Example :- Making a AreaCalculator class which contain a method with a parameter of protocol so object of any class inheriting that protocol can be passed in it and get the area of any Shape Type (Rectangle, Circle , Triangle)
 > - [Open Close Video](https://www.youtube.com/watch?v=WJznwyuOHZc&list=PLb5R4QC2DtFuC7WzUd5bJP3tdVsUcI8E8&index=3)
 
 > ## L - Liskov Substitution Principle
 > - Child class should not change the functionality of Parent class
+> - As Rectangle and Square have a minor difference, someone would override property of length and make it equal to width for ease. but instead of that we should make protocol and use that so once cannot override property of parent class and change functionality of that.
 > - [](https://www.youtube.com/watch?v=VAA6lZsODh4&list=PLb5R4QC2DtFuC7WzUd5bJP3tdVsUcI8E8&index=4)
 
 > ## I - Interface Segregation Principle
